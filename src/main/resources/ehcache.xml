@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ehcache xsi:noNamespaceSchemaLocation="ehcache.xsd"
+	updateCheck="false" monitoring="autodetect">
+	<diskStore path="java.io.tmpdir" />
+	<defaultCache maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120" overflowToDisk="false"
+		maxElementsOnDisk="10000000" diskPersistent="false"
+		diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" />
+	<!-- transactionManagerLookup
+		class="net.sf.ehcache.transaction.manager.DefaultTransactionManagerLookup"
+		properties="jndiName=java:/TransactionManager" propertySeparator=";" / -->
+	<!-- cache name="xaCache" maxElementsInMemory="500" eternal="true" timeToIdleSeconds="300" 
+		timeToLiveSeconds="600" overflowToDisk="false" diskPersistent="false" diskExpiryThreadIntervalSeconds="1" 
+		transactionalMode="xa"> <terracotta clustered="false" /> </cache> <terracottaConfig 
+		url="localhost:9510" / -->
+</ehcache>
