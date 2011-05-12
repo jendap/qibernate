@@ -14,4 +14,13 @@
 		timeToLiveSeconds="600" overflowToDisk="false" diskPersistent="false" diskExpiryThreadIntervalSeconds="1" 
 		transactionalMode="xa"> <terracotta clustered="false" /> </cache> <terracottaConfig 
 		url="localhost:9510" / -->
+	<cache name="cz.querity.qibernate.model.Cat"
+		maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="300"
+		timeToLiveSeconds="600" overflowToDisk="true" />
+	<cache name="cz.querity.qibernate.model.Kitten"
+		maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="300"
+		timeToLiveSeconds="600" overflowToDisk="true" />
+	<cache name="org.hibernate.cache.StandardQueryCache"
+		maxElementsInMemory="5" eternal="false" timeToLiveSeconds="120"
+		overflowToDisk="true" />
 </ehcache>
