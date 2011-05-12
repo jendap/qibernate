@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="300 seconds">
+	<!-- property file is in a form "key=value", may contain environment variables - i.e. "destination=${USER_HOME}/${fileName}" -->
+	<!-- property file="variables.properties" / -->
+
+	<jmxConfigurator />
+
+	<contextName>Qibernate</contextName>
+
+	<timestamp key="bySecond" datePattern="yyyyMMdd'-'HHmmss" />
+
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+<!--		<file>qibernate-${HOSTNAME}-${bySecond}.log.gz</file>-->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_FILENAME_PREFIX:-qibernate}-${HOSTNAME}-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+					class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>256MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+<!--			<maxHistory>366</maxHistory>-->
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<!-- pattern>%d{HH:mm:ss.SSS} %msg%n</pattern -->
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.hibernate.SQL" level="INFO" />
+	<logger name="org.hibernate.cache" level="DEBUG" />
+<!--	<logger name="org.hibernate.*" level="INFO" />-->
+
+<!--	<logger name="cz.querity" additivity="false">-->
+<!--		<appender-ref ref="MRFILE" />-->
+<!--	</logger>-->
+
+	<root level="${LOGBACK_ROOT_LEVEL:-INFO}">
+		<appender-ref ref="${LOGBACK_ROOT_APPENDER:-FILE}" />
+	</root>
+</configuration>
