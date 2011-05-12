@@ -21,6 +21,7 @@ public class CatDAOHQLImpl implements CatDAO {
 		@SuppressWarnings("unchecked")
 		final List<Cat> result = session
 				.createQuery("from Cat where name = :name")
+				.setCacheable(true)
 				.setString("name", name).list();
 		return result;
 	}

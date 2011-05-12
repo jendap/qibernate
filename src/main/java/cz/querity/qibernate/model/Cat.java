@@ -3,6 +3,7 @@ package cz.querity.qibernate.model;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -24,8 +25,9 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Data
 @NoArgsConstructor
 @Entity
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @ToString(of = "id")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Cat implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -39,6 +41,7 @@ public class Cat implements Serializable {
 
 	@ElementCollection
 	@OneToMany(mappedBy = "cat", cascade = CascadeType.ALL)
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Collection<Kitten> kittens;
 
 	@NotNull
