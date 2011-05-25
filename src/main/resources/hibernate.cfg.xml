@@ -13,14 +13,22 @@
 		<property name="connection.username">sa</property>
 		<property name="connection.password"></property>
 
-		<!-- JDBC connection pool (use the built-in) -->
-		<property name="connection.pool_size">4</property>
-
 		<!-- SQL dialect -->
 		<property name="dialect">org.hibernate.dialect.H2Dialect</property>
 
 		<!-- Enable Hibernate's automatic session context management -->
 		<property name="current_session_context_class">thread</property>
+
+		<!-- JDBC connection pool (use the built-in) -->
+<!-- 		<property name="connection.pool_size">4</property> -->
+
+		<!-- configuration pool via c3p0-->
+		<property name="c3p0.acquire_increment">1</property>
+		<property name="c3p0.idle_test_period">3</property> <!-- seconds -->
+		<property name="c3p0.min_size">1</property>
+		<property name="c3p0.max_size">3</property>
+		<property name="c3p0.max_statements">0</property>
+		<property name="c3p0.timeout">3</property> <!-- seconds -->
 
 		<!-- Enable query and second-level cache -->
 		<property name="cache.use_second_level_cache">true</property>
