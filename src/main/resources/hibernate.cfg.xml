@@ -38,6 +38,11 @@
 
 		<!-- Echo all executed SQL to stdout -->
 <!--		<property name="show_sql">true</property>-->
+<!--		<property name="format_sql">true</property>-->
+<!--		<property name="use_sql_comments">true</property>-->
+
+		<!-- Enable statistics -->
+<!--		<property name="generate_statistics">true</property>-->
 
 		<!-- Enable JMX monitoring -->
 		<property name="generate_statistics">true</property>
