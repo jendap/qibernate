@@ -1,20 +1,14 @@
 package cz.querity.qibernate.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 
 import javax.persistence.Cacheable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Version;
-import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,7 +23,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @ToString(of = "id")
-public class Cat implements Serializable {
+public class Nest implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -40,22 +34,12 @@ public class Cat implements Serializable {
 	@Version
 	private int version;
 
-	@ElementCollection
-	@OneToMany(mappedBy = "cat", cascade = CascadeType.ALL)
-	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-	private Collection<Kitten> kittens;
-
-	@NotNull
 	private String name;
 
-	@OneToOne
-	private Nest nest;
+	private String address;
 
-	private int age;
-
-	public Cat(final String name, final Nest nest, final int age) {
+	public Nest(final String name, final String address) {
 		this.name = name;
-		this.nest = nest;
-		this.age = age;
+		this.address = address;
 	}
 }

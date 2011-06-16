@@ -25,6 +25,7 @@ import cz.querity.qibernate.dao.hibernate.CatDAOHQLImpl;
 import cz.querity.qibernate.dao.jpa.CatDAOJPAImpl;
 import cz.querity.qibernate.model.Cat;
 import cz.querity.qibernate.model.Kitten;
+import cz.querity.qibernate.model.Nest;
 
 public class CatDAOTest {
 	private static SessionFactory sessionFactory;
@@ -43,8 +44,11 @@ public class CatDAOTest {
 		final Session session = sessionFactory.openSession();
 		final Transaction transaction = session.beginTransaction();
 
-   		final Cat cat0 = new Cat("roztleskavacka", null, 5);
-   		final Cat cat1 = new Cat("foo", "bar", 50);
+		final Nest nest0 = new Nest("Nest", "Here");
+		session.save(nest0);
+
+		final Cat cat0 = new Cat("roztleskavacka", null, 5);
+		final Cat cat1 = new Cat("foo", nest0, 50);
 		session.save(cat0);
 		session.save(cat1);
 

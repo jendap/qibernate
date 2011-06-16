@@ -15,6 +15,7 @@ import org.junit.Test;
 
 import cz.querity.qibernate.model.Cat;
 import cz.querity.qibernate.model.Kitten;
+import cz.querity.qibernate.model.Nest;
 
 public class KittenValidationTest {
 	private static ValidatorFactory validatorFactory;
@@ -31,8 +32,9 @@ public class KittenValidationTest {
 
 	@Before
 	public void setUp() {
+		final Nest nest0 = new Nest("foo", "bar");
 		this.cat0 = new Cat("roztleskavacka", null, 5);
-		this.cat1 = new Cat("foo", "bar", 50);
+		this.cat1 = new Cat("foo", nest0, 50);
 	}
 
 	@Test

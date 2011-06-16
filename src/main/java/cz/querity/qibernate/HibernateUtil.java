@@ -5,6 +5,7 @@ import org.hibernate.cfg.Configuration;
 
 import cz.querity.qibernate.model.Cat;
 import cz.querity.qibernate.model.Kitten;
+import cz.querity.qibernate.model.Nest;
 
 
 public class HibernateUtil {
@@ -38,8 +39,9 @@ public class HibernateUtil {
 			// Create the SessionFactory from hibernate.cfg.xml
 			final Configuration configuration = new Configuration();
 			return configuration.configure()
-					.addAnnotatedClass(Kitten.class)
 					.addAnnotatedClass(Cat.class)
+					.addAnnotatedClass(Kitten.class)
+					.addAnnotatedClass(Nest.class)
 					.buildSessionFactory();
 		} catch (final Throwable ex) {
 			// Make sure you log the exception, as it might be swallowed
