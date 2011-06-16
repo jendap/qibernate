@@ -108,11 +108,11 @@
 			<version>${genericdao.version}</version>
 		</dependency>
 
-		<!-- dependency>
-			<groupId>org.hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<version>${hsqldb.version}</version>
-		</dependency -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hsqldb</groupId> -->
+<!-- 			<artifactId>hsqldb</artifactId> -->
+<!-- 			<version>${hsqldb.version}</version> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -279,13 +279,13 @@
 					<source>${target.jdk}</source>
 					<target>${target.jdk}</target>
 					<!-- hibernate annotaion recommends following option but it breaks lombok -->
-					<!-- compilerArgument>-proc:none</compilerArgument -->
-					<!-- includes>
-						<include>**/core/**</include>
-					</includes -->
-					<!-- compilerArguments>
-						<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
-					</compilerArguments -->
+					<compilerArgument>-proc:none</compilerArgument>
+<!-- 					<includes> -->
+<!-- 						<include>**/core/**</include> -->
+<!-- 					</includes> -->
+<!-- 					<compilerArguments> -->
+<!-- 						<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor> -->
+<!-- 					</compilerArguments> -->
 				</configuration>
 			</plugin>
 			<plugin>
@@ -321,7 +321,8 @@
 						</goals>
 						<phase>generate-sources</phase>
 						<configuration>
-							<compilerArguments>-AaddGeneratedAnnotation=TRUE</compilerArguments>
+							<outputDirectory>target/generated-sources/apt</outputDirectory>
+<!-- 							<compilerArguments>-AaddGeneratedAnnotation=TRUE</compilerArguments> -->
 						</configuration>
 					</execution>
 				</executions>
