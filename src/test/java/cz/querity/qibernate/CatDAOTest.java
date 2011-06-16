@@ -11,6 +11,7 @@ import javax.persistence.Persistence;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.context.ManagedSessionContext;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -28,16 +29,18 @@ import cz.querity.qibernate.model.Kitten;
 public class CatDAOTest {
 	private static SessionFactory sessionFactory;
 	private static EntityManagerFactory entityManagerFactory;
+	private static EntityManager entityManager;
 
+	private Session session;
 	private Transaction transaction;
-	private EntityManager entityManager;
 
 	@BeforeClass
 	public static void setUpClass() {
 		sessionFactory = HibernateUtil.getSessionFactory();
 		entityManagerFactory = Persistence.createEntityManagerFactory("manager1");
+		entityManager = entityManagerFactory.createEntityManager();
 
-		final Session session = sessionFactory.getCurrentSession();
+		final Session session = sessionFactory.openSession();
 		final Transaction transaction = session.beginTransaction();
 
    		final Cat cat0 = new Cat("roztleskavacka", null, 5);
@@ -51,23 +54,26 @@ public class CatDAOTest {
 		session.save(kitten1);
 
 		transaction.commit();
+		session.close();
 	}
 
 //	@AfterClass
 //	public static void tearDownClass() {
+//		entityManager.close();
 //		entityManagerFactory.close();
 //		sessionFactory.close();
 //	}
 
 	@Before
 	public void setUp() {
-		this.transaction = sessionFactory.getCurrentSession().beginTransaction();
-		this.entityManager = entityManagerFactory.createEntityManager();
+		this.session = sessionFactory.openSession();
+		this.transaction = this.session.beginTransaction();
 	}
 
 	@After
 	public void tearDown() {
 		this.transaction.rollback();
+		this.session.close();
 	}
 
 	private void assertCheerleaderCat(final List<Cat> cheerleaders) {
@@ -85,26 +91,28 @@ public class CatDAOTest {
 
 	@Test
 	public void testCatDAOCriteriaAPI() {
-		this.catDaoTest(new CatDAOCriteriaAPIImpl(sessionFactory));
+		this.catDaoTest(new CatDAOCriteriaAPIImpl(this.session));
 	}
 
 	@Test
 	public void testCatDAOGenericHibernateDAO() {
+		ManagedSessionContext.bind((org.hibernate.classic.Session) this.session);
 		this.catDaoTest(new CatDAOGenericHibernateImpl(sessionFactory));
+		ManagedSessionContext.unbind(sessionFactory);
 	}
 
 	@Test
 	public void testCatDAOGenericJPADAO() {
-		this.catDaoTest(new CatDAOGenericJPAImpl(sessionFactory, this.entityManager));
+		this.catDaoTest(new CatDAOGenericJPAImpl(sessionFactory, CatDAOTest.entityManager));
 	}
 
 	@Test
 	public void testCatDAOHQL() {
-		this.catDaoTest(new CatDAOHQLImpl(sessionFactory));
+		this.catDaoTest(new CatDAOHQLImpl(this.session));
 	}
 
 	@Test
 	public void testCatDAOJPA() {
-		this.catDaoTest(new CatDAOJPAImpl(this.entityManager));
+		this.catDaoTest(new CatDAOJPAImpl(CatDAOTest.entityManager));
 	}
 }
