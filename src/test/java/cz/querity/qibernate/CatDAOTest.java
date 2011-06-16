@@ -12,7 +12,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -54,11 +53,11 @@ public class CatDAOTest {
 		transaction.commit();
 	}
 
-	@AfterClass
-	public static void tearDownClass() {
-		entityManagerFactory.close();
-		sessionFactory.close();
-	}
+//	@AfterClass
+//	public static void tearDownClass() {
+//		entityManagerFactory.close();
+//		sessionFactory.close();
+//	}
 
 	@Before
 	public void setUp() {
