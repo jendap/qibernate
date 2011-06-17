@@ -28,7 +28,7 @@ public class ValidKittenValidator implements
 			return true;
 		}
 
-		if (value.getCat().getName().endsWith("leskavacka")) {
+		if (value.getCat().getName().contains("kavacka")) {
 			return true;
 		} else {
 			context.disableDefaultConstraintViolation();
