@@ -39,8 +39,8 @@ public class CatDAOCriteriaAPIImpl implements CatDAO {
 	public List<Cat> findByAge(final int from, final int to) {
 		final Property ageProperty = Property.forName("age");
 		final Criteria criteria = this.session.createCriteria(Cat.class).add(
-				Restrictions.disjunction().add(ageProperty.isNull())
-						.add(ageProperty.between(from, to)));
+				Restrictions.conjunction().add(ageProperty.ge(from))
+						.add(ageProperty.lt(to)));
 		@SuppressWarnings("unchecked")
 		final List<Cat> result = criteria.list();
 		return result;

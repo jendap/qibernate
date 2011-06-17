@@ -36,8 +36,7 @@ public class CatDAOHQLImpl implements CatDAO {
 	public List<Cat> findByAge(final int from, final int to) {
 		@SuppressWarnings("unchecked")
 		final List<Cat> result = this.session
-				// .createQuery("from Cat where age > ? and age < ?")
-				.createQuery("from Cat where age between ? and ?")
+				.createQuery("from Cat where age >= ? and age < ?")
 				.setInteger(0, from).setInteger(1, to).list();
 		return result;
 	}

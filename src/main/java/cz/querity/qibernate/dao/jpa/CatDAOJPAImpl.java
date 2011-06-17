@@ -37,7 +37,7 @@ public class CatDAOJPAImpl implements CatDAO {
 	public List<Cat> findByAge(final int from, final int to) {
 		final CriteriaQuery<Cat> cq = this.cb.createQuery(Cat.class);
 		final Root<Cat> c = cq.from(Cat.class);
-		cq.where(this.cb.between(c.get(Cat_.age), from, to));
+		cq.where(this.cb.and(this.cb.ge(c.get(Cat_.age), from), this.cb.lt(c.get(Cat_.age), to)));
 		final TypedQuery<Cat> q = this.em.createQuery(cq);
 		return q.getResultList();
 	}
@@ -53,7 +53,7 @@ public class CatDAOJPAImpl implements CatDAO {
 //						this.cb.or(
 //								this.cb.and(
 //										this.cb.isNotNull(c.get(Cat_.age)),
-//										this.cb.between(c.get(Cat_.age), from, to)),
+//										this.cb.and(this.cb.ge(c.get(Cat_.age), from), this.cb.lt(c.get(Cat_.age), to))),
 //								this.cb.equal(o.get(Kitten_.price), 100)),
 //						this.cb.equal(c.get(Cat_.id), o.get(Kitten_.cat))));
 //		final TypedQuery<Cat> tq = this.em.createQuery(cq);
