@@ -1,4 +1,4 @@
-package cz.querity.qibernate;
+package cz.querity.qibernate.valitator;
 
 import static org.junit.Assert.assertEquals;
 

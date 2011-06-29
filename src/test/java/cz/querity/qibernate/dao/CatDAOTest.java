@@ -1,4 +1,4 @@
-package cz.querity.qibernate;
+package cz.querity.qibernate.dao;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,6 +18,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import cz.querity.qibernate.HibernateUtil;
 import cz.querity.qibernate.dao.CatDAO;
 import cz.querity.qibernate.dao.generic.CatDAOGenericHibernateImpl;
 import cz.querity.qibernate.dao.generic.CatDAOGenericJPAImpl;

@@ -1,4 +1,4 @@
-package cz.querity.qibernate;
+package cz.querity.qibernate.dao;
 
 import lombok.Data;
 
