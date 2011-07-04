@@ -39,7 +39,7 @@ public class CatDAOTest {
 	@BeforeClass
 	public static void setUpClass() {
 		sessionFactory = HibernateUtil.getSessionFactory();
-		entityManagerFactory = Persistence.createEntityManagerFactory("manager1");
+		entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit");
 		entityManager = entityManagerFactory.createEntityManager();
 
 		fixtures = new Fixtures("CatDAO");
