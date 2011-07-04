@@ -8,7 +8,40 @@
 	<packaging>jar</packaging>
 
 	<name>qibernate</name>
-	<url>http://maven.apache.org</url>
+	<description>Qocka for President!</description>
+	<url>http://qibernate.querity.cz</url>
+
+	<scm>
+		<connection>scm:git:git@github.com:jendap/qibernate.git</connection>
+		<url>scm:git:git@github.com:jendap/qibernate.git</url>
+		<developerConnection>scm:git:git@github.com:jendap/qibernate.git</developerConnection>
+	</scm>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/jendap/qibernate/issues/</url>
+	</issueManagement>
+
+	<developers>
+		<developer>
+			<id>jan.prach</id>
+			<name>Jan Prach</name>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
+
+	<organization>
+		<name>Querity</name>
+		<url>http://querity.cz</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
 	<properties>
 		<target.jdk>1.6</target.jdk>
