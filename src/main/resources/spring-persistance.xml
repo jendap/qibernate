@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+	<!-- property files used for property replacement -->
+<!-- 	<context:property-placeholder location="classpath:db.properties, classpath:jpa.properties" /> -->
+
+	<!-- post-processors for all standard configuration annotations -->
+	<context:annotation-config />
+
+	<!--  tell spring where to find the beans -->
+	<context:component-scan base-package="cz.querity.qibernate" />
+
+	<tx:annotation-driven />
+
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+
+	<jpa:repositories base-package="cz.querity.qibernate.spring.repository" />
+
+
+
+	<!-- jdbc -->
+<!-- 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!-- 		<property name="driverClassName" value="org.h2.Driver" /> -->
+<!-- 		<property name="url" value="jdbc:h2:memFS:/tmp/foo;MVCC=TRUE" /> -->
+<!-- 		<property name="username" value="sa" /> -->
+<!-- 		<property name="password" value="" /> -->
+<!-- 	</bean> -->
+
+
+
+	<!-- hibernate -->
+<!-- 	<bean id="sessionFactory" -->
+<!-- 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="sessionFactory" -->
+<!-- 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"> -->
+<!-- 		<property name="hibernateProperties"> -->
+<!-- 			<props> -->
+<!-- 				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop> -->
+<!-- 				<prop key="hibernate.connection.driver_class">org.h2.Driver</prop> -->
+<!-- 				<prop key="hibernate.connection.username">sa</prop> -->
+<!-- 				<prop key="hibernate.connection.password"></prop> -->
+<!-- 				<prop key="hibernate.connection.url">jdbc:h2:memFS:/tmp/foo;MVCC=TRUE</prop> -->
+<!-- 				<prop key="hibernate.cache.use_second_level_cache">false</prop> -->
+<!-- 				<prop key="hibernate.cache.use_query_cache">false</prop> -->
+<!-- 			</props> -->
+<!-- 		</property> -->
+<!-- 		<property name="annotatedClasses"> -->
+<!-- 			<list> -->
+<!-- 				<value>cz.querity.qibernate.model.Cat</value> -->
+<!-- 				<value>cz.querity.qibernate.model.Kitten</value> -->
+<!-- 				<value>cz.querity.qibernate.model.Nest</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="hibernateInterceptor" class="org.springframework.orm.hibernate3.HibernateInterceptor" /> -->
+
+<!-- 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"> -->
+<!-- 		<property name="sessionFactory" ref="sessionFactory"/> -->
+<!-- 	</bean> -->
+
+
+
+	<!-- jpa -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="jpaDialect">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+		</property>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+		<property name="persistenceUnitName" value="myPersistenceUnit" />
+<!-- 		<property name="persistenceUnitManager"> -->
+<!-- 			<bean class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager" /> -->
+<!-- 		</property> -->
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+				<prop key="hibernate.connection.driver_class">org.h2.Driver</prop>
+				<prop key="hibernate.connection.url">jdbc:h2:memFS:/tmp/foo;MVCC=TRUE</prop>
+				<prop key="hibernate.connection.username">sa</prop>
+				<prop key="hibernate.connection.password"></prop>
+			</props>
+		</property>
+<!-- 		<property name="loadTimeWeaver"> -->
+<!-- 			<bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" /> -->
+<!-- 		</property> -->
+	</bean>
+</beans>

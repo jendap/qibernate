@@ -1,0 +1,62 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:cxf="http://cxf.apache.org/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+		http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd"
+	default-lazy-init="false">
+
+
+
+	<!-- do not use import statements if CXFServlet init parameters link here -->
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+
+
+<!-- 	<bean id="jacksonMapper" class="org.codehaus.jackson.map.ObjectMapper"> -->
+<!-- 		<property name="serializationConfig.dateFormat"> -->
+<!-- 			<bean class="java.text.SimpleDateFormat"> -->
+<!-- 				<constructor-arg value="yyyy-MM-dd'T'HH:mm:ss.SZ" /> -->
+<!-- 			</bean> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" -->
+<!-- 		p:mapper-ref="jacksonMapper" /> -->
+	<bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
+
+
+
+	<bean id="catService" class="cz.querity.qibernate.spring.service.CatServiceImpl" />
+	<bean id="catServiceRS" class="cz.querity.qibernate.spring.webservice.CatServiceRSImpl" />
+	<bean id="catServiceWS" class="cz.querity.qibernate.spring.webservice.CatServiceWSImpl" />
+
+
+
+<!-- 	<jaxws:endpoint id="catServiceSOAP" implementor="#catServiceWS" address="/catServiceWS" /> -->
+
+	<jaxws:server id="jaxwsService" address="/catServiceWS">
+		<jaxws:serviceBean>
+			<ref bean="catServiceWS" />
+		</jaxws:serviceBean>
+	</jaxws:server>
+
+
+
+	<jaxrs:server id="jaxrsService" address="/catServiceRS">
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+		<jaxrs:serviceBeans>
+			<ref bean="catServiceRS" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:extensionMappings>
+			<entry key="xml" value="application/xml" />
+			<entry key="json" value="application/json" />
+		</jaxrs:extensionMappings>
+	</jaxrs:server>
+</beans>

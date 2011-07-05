@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <Cat id='1' version='1' name="catDAOtleskavacka0" age='4' />
+    <Cat id='2' version='1' name="catDAOtleskavacka1" age='20' />
+</dataset>
