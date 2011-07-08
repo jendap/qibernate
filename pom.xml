@@ -48,6 +48,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+		<generatedSourcesDirectory>${project.build.directory}/generated-sources/annotations</generatedSourcesDirectory>
+
 		<lombok.version>0.9.3</lombok.version>
 		<slf4j.version>1.6.1</slf4j.version>
 		<logback.version>0.9.29</logback.version>
@@ -239,12 +241,6 @@
 		<!-- querydsl -->
 		<dependency>
 			<groupId>com.mysema.querydsl</groupId>
-			<artifactId>querydsl-apt</artifactId>
-			<version>${querydsl.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.mysema.querydsl</groupId>
 			<artifactId>querydsl-jpa</artifactId>
 			<version>${querydsl.version}</version>
 		</dependency>
@@ -264,17 +260,27 @@
 		</dependency>
 		<dependency>
 			<groupId>com.mysema.querydsl</groupId>
-			<artifactId>querydsl-apt</artifactId>
-			<version>${querydsl.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.mysema.querydsl</groupId>
 			<artifactId>querydsl-jpa</artifactId>
 			<version>${querydsl.version}</version>
-			<classifier>apt</classifier>
+			<classifier>apt-hibernate-one-jar</classifier>
 			<scope>provided</scope>
 		</dependency>
+<!-- to setup annotation processors in eclipse do following: -->
+<!-- in project properties: -->
+<!--   in -> java compiler -> annotation processing -> -->
+<!--     check "enable project specifing settings" -->
+<!--     set "generated sources directory" to "target/generated-sources/annotations" -->
+<!--   in -> java compiler -> annotation processing -> annotation path -->
+<!--     check "enable project specifing settings" -->
+<!--     add following: -->
+<!--       1) click "add variable...", select M2_REPO -->
+<!--       2) clieck "edit..." and add one of the followings: -->
+<!--         M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.0.Final/hibernate-jpa-2.0-api-1.0.0.Final.jar -->
+<!--         M2_REPO/org/hibernate/hibernate-jpamodelgen/${hibernate-jpamodelgen.version}/hibernate-jpamodelgen-${hibernate-jpamodelgen.version}.jar -->
+<!--         M2_REPO/org/hibernate/hibernate-validator-annotation-processor/${hibernate-validator.version}/hibernate-validator-annotation-processor-${hibernate-validator.version}.jar -->
+<!--         M2_REPO/org/hibernate/hibernate-validator/${hibernate-validator.version}/hibernate-validator-${hibernate-validator.version}.jar -->
+<!--         M2_REPO/M2_REPO/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar -->
+<!--         M2_REPO/com/mysema/querydsl/querydsl-jpa/${querydsl.version}/querydsl-jpa-${querydsl.version}-apt-hibernate-one-jar.jar -->
 
 		<!-- test -->
 		<dependency>

@@ -3,6 +3,7 @@
 .pmd
 .project
 .ruleset
+.factorypath
 .settings/
 target/
 tmp/
