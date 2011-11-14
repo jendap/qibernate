@@ -5,11 +5,20 @@
 	<groupId>com.github.jendap</groupId>
 	<artifactId>qibernate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 
 	<name>qibernate</name>
 	<description>Qocka for President!</description>
 	<url>https://github.com/jendap/qibernate</url>
+
+	<modules>
+		<module>qibernate-hibernate</module>
+		<module>qibernate-genericdao</module>
+		<module>qibernate-querydsl</module>
+		<module>qibernate-spring</module>
+		<module>qibernate-misc</module>
+		<module>qibernate-cxf</module>
+	</modules>
 
 	<scm>
 		<connection>scm:git:git@github.com:jendap/qibernate.git</connection>
@@ -40,13 +49,12 @@
 
 	<properties>
 		<jdk.version>1.6</jdk.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
+		<character.encoding>UTF-8</character.encoding>
 		<generatedAnnotationsDirectory>${project.build.directory}/generated-sources/annotations</generatedAnnotationsDirectory>
 	</properties>
 
 	<dependencies>
+		<!-- lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -54,6 +62,7 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -65,189 +74,24 @@
 			<version>1.0.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>javax.annotation</groupId>
-			<artifactId>jsr250-api</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.transaction</groupId>
-			<artifactId>jta</artifactId>
-			<version>1.1</version>
-		</dependency>
+		<!-- dependency injection -->
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>1.0-PFD-1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>3.6.7.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>3.6.7.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-c3p0</artifactId>
-			<version>3.6.7.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-ehcache</artifactId>
-			<version>3.6.7.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>3.5.6-Final</version>
-		</dependency>
-		<dependency>
-			<groupId>com.googlecode.genericdao</groupId>
-			<artifactId>dao</artifactId>
-			<version>1.1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.googlecode.genericdao</groupId>
-			<artifactId>dao-hibernate</artifactId>
-			<version>1.1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.googlecode.genericdao</groupId>
-			<artifactId>search-jpa-hibernate</artifactId>
-			<version>1.1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.mysema.querydsl</groupId>
-			<artifactId>querydsl-jpa</artifactId>
-			<version>2.2.4</version>
-		</dependency>
-
+		<!-- collections -->
 		<!-- <dependency> -->
-		<!-- <groupId>org.hsqldb</groupId> -->
-		<!-- <artifactId>hsqldb</artifactId> -->
-		<!-- <version>2.2.4</version> -->
+		<!-- <groupId>com.google.guava</groupId> -->
+		<!-- <artifactId>guava</artifactId> -->
+		<!-- <version>10.0.1</version> -->
 		<!-- </dependency> -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.3.161</version>
-		</dependency>
-
-		<dependency>
-			<groupId>c3p0</groupId>
-			<artifactId>c3p0</artifactId>
-			<version>0.9.1.2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>net.sf.ehcache</groupId>
-			<artifactId>ehcache-core</artifactId>
-			<version>2.4.6</version>
-		</dependency>
-
-		<!-- spring -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.context.support</artifactId>
-			<version>3.0.6.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.orm</artifactId>
-			<version>3.0.6.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.oxm</artifactId>
-			<version>3.0.6.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
-			<version>1.1.0.M1</version>
-		</dependency>
-
-		<!-- apache cxf -->
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-frontend-jaxws</artifactId>
-			<version>2.5.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
-			<version>2.5.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-bundle-jaxrs</artifactId>
-			<version>2.5.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-local</artifactId>
-			<version>2.5.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-http-jetty</artifactId>
-			<version>2.5.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-jaxrs</artifactId>
-			<version>1.9.2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.googlecode.lambdaj</groupId>
-			<artifactId>lambdaj</artifactId>
-			<version>2.3.3</version>
-		</dependency>
-
-		<!-- annotations processors -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-jpamodelgen</artifactId>
-			<version>1.1.1.Final</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator-annotation-processor</artifactId>
-			<version>4.2.0.Final</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.mysema.querydsl</groupId>
-			<artifactId>querydsl-jpa</artifactId>
-			<version>2.2.4</version>
-			<classifier>apt-hibernate-one-jar</classifier>
-			<scope>provided</scope>
-		</dependency>
-		<!-- to setup annotation processors in eclipse do following: -->
-		<!-- in project properties: -->
-		<!-- in -> java compiler -> annotation processing -> -->
-		<!-- check "enable project specifing settings" -->
-		<!-- set "generated sources directory" to "target/generated-sources/annotations" -->
-		<!-- add "defaultOverwrite = true" APT option -->
-		<!-- in -> java compiler -> annotation processing -> annotation path -->
-		<!-- check "enable project specifing settings" -->
-		<!-- add following: -->
-		<!-- 1) click "add variable...", select M2_REPO -->
-		<!-- 2) clieck "edit..." and add one of the followings: -->
-		<!-- M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.0.Final/hibernate-jpa-2.0-api-1.0.0.Final.jar -->
-		<!-- M2_REPO/org/hibernate/hibernate-jpamodelgen/${hibernate-jpamodelgen.version}/hibernate-jpamodelgen-${hibernate-jpamodelgen.version}.jar -->
-		<!-- M2_REPO/org/hibernate/hibernate-validator-annotation-processor/${hibernate-validator.version}/hibernate-validator-annotation-processor-${hibernate-validator.version}.jar -->
-		<!-- M2_REPO/org/hibernate/hibernate-validator/${hibernate-validator.version}/hibernate-validator-${hibernate-validator.version}.jar -->
-		<!-- M2_REPO/M2_REPO/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar -->
-		<!-- M2_REPO/com/mysema/querydsl/querydsl-jpa/${querydsl.version}/querydsl-jpa-${querydsl.version}-apt-hibernate-one-jar.jar -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.googlecode.lambdaj</groupId> -->
+		<!-- <artifactId>lambdaj</artifactId> -->
+		<!-- <version>2.3.3</version> -->
+		<!-- </dependency> -->
 
 		<!-- test -->
 		<dependency>
@@ -256,35 +100,9 @@
 			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.excilys.ebi.utils</groupId>
-			<artifactId>spring-test-dbunit</artifactId>
-			<version>1.1.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.test</artifactId>
-			<version>3.0.6.RELEASE</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>**</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>src/main/webapp</directory>
-				<includes>
-					<include>**</include>
-				</includes>
-			</resource>
-		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -294,93 +112,43 @@
 					<compilerVersion>${jdk.version}</compilerVersion>
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
+					<encoding>${character.encoding}</encoding>
 					<showDeprecation>true</showDeprecation>
 					<showWarnings>true</showWarnings>
 					<compilerArgument>-AaddGeneratedAnnotation=TRUE</compilerArgument>
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.2.1</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<encoding>${character.encoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1.2</version>
 				<executions>
 					<execution>
-						<phase>pre-site</phase>
 						<goals>
-							<goal>exec</goal>
+							<goal>jar</goal>
 						</goals>
 					</execution>
 				</executions>
-				<configuration>
-					<executable>java</executable>
-					<arguments>
-						<argument>-classpath</argument>
-						<classpath />
-						<argument>com.github.jendap.qibernate.Qibernate</argument>
-					</arguments>
-				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.7</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3.2</version>
 				<executions>
 					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
 						<goals>
-							<goal>add-source</goal>
+							<goal>test-jar</goal>
 						</goals>
-						<configuration>
-							<sources>
-								<source>${generatedAnnotationsDirectory}</source>
-							</sources>
-						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>8.0.4.v20111024</version>
-				<configuration>
-					<scanIntervalSeconds>3</scanIntervalSeconds>
-					<webAppSourceDirectory>WEB-INF</webAppSourceDirectory>
-					<!-- <webAppConfig> -->
-					<!-- <contextPath>/qService</contextPath> -->
-					<!-- </webAppConfig> -->
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>hibernate3-maven-plugin</artifactId>
-				<version>2.2</version>
-				<!-- <executions> -->
-				<!-- <execution> -->
-				<!-- <phase>process-classes</phase> -->
-				<!-- <goals> -->
-				<!-- <goal>hbm2ddl</goal> -->
-				<!-- </goals> -->
-				<!-- </execution> -->
-				<!-- </executions> -->
-				<configuration>
-					<components>
-						<component>
-							<name>hbm2ddl</name>
-							<implementation>annotationconfiguration</implementation>
-						</component>
-					</components>
-					<componentProperties>
-						<implementation>jpaconfiguration</implementation>
-						<persistenceunit>myPersistenceUnit</persistenceunit>
-						<outputfilename>myschema.ddl</outputfilename>
-						<propertyfile>${basedir}/src/main/resources/database.properties</propertyfile>
-						<drop>false</drop>
-						<create>true</create>
-						<export>false</export>
-						<format>true</format>
-					</componentProperties>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -417,11 +185,6 @@
 		<repository>
 			<id>lambdaj</id>
 			<url>http://lambdaj.googlecode.com/svn/repo/releases/</url>
-		</repository>
-
-		<repository>
-			<id>dbunit</id>
-			<url>http://repository.excilys.com/content/repositories/releases</url>
 		</repository>
 	</repositories>
 
