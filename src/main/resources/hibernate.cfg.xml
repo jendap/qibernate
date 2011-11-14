@@ -5,24 +5,27 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<!-- Database connection settings -->
-		<!-- property name="connection.driver_class">org.hsqldb.jdbcDriver</property> 
-			<property name="connection.url">jdbc:hsqldb:hsql://localhost</property -->
+		<!-- Connection properties -->
 		<property name="connection.driver_class">org.h2.Driver</property>
 		<property name="connection.url">jdbc:h2:memFS:/tmp/foo;MVCC=TRUE</property>
 		<property name="connection.username">sa</property>
 		<property name="connection.password"></property>
+		<!-- <property name="connection.pool_size">4</property> -->
+		<!-- <property name="connection.autocommit">true</property> -->
+		<!-- <property name="connection.isolation">true</property> -->
 
 		<!-- SQL dialect -->
 		<property name="dialect">org.hibernate.dialect.H2Dialect</property>
 
 		<!-- Enable Hibernate's automatic session context management -->
 		<property name="current_session_context_class">managed</property>
+		<!-- <property name="current_session_context_class">thread</property> -->
 
-		<!-- JDBC connection pool (use the built-in) -->
-<!-- 		<property name="connection.pool_size">4</property> -->
+		<!-- Transaction properties -->
+		<!-- <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property> -->
+		<!-- <property name="transaction.auto_close_session">true</property> -->
 
-		<!-- configuration pool via c3p0-->
+		<!-- Thread pool configuration using c3p0 -->
 		<property name="c3p0.acquire_increment">1</property>
 		<property name="c3p0.idle_test_period">3</property> <!-- seconds -->
 		<property name="c3p0.min_size">1</property>
@@ -33,22 +36,21 @@
 		<!-- Enable query and second-level cache -->
 		<property name="cache.use_second_level_cache">true</property>
 		<property name="cache.use_query_cache">true</property>
-		<property name="cache.CacheProvider">org.hibernate.cache.EhCacheProvider</property>
+		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
 		<property name="cache.region.factory_class">net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory</property>
 
 		<!-- Echo all executed SQL to stdout -->
-<!--		<property name="show_sql">true</property>-->
-<!--		<property name="format_sql">true</property>-->
-<!--		<property name="use_sql_comments">true</property>-->
-
-		<!-- Enable statistics -->
-<!--		<property name="generate_statistics">true</property>-->
+		<!-- <property name="show_sql">true</property> -->
+		<!-- <property name="format_sql">true</property> -->
+		<!-- <property name="use_sql_comments">true</property> -->
 
 		<!-- Enable JMX monitoring -->
 		<property name="generate_statistics">true</property>
 
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hbm2ddl.auto">update</property>
-		<!-- mapping resource="org/hibernate/tutorial/domain/Event.hbm.xml"/ -->
+
+		<!-- hibernate xml based entity configuration -->
+		<!-- <mapping resource="org/hibernate/tutorial/domain/Event.hbm.xml"/> -->
 	</session-factory>
 </hibernate-configuration>

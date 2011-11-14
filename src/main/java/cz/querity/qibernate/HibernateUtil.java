@@ -7,37 +7,15 @@ import cz.querity.qibernate.model.Cat;
 import cz.querity.qibernate.model.Kitten;
 import cz.querity.qibernate.model.Nest;
 
-
 public class HibernateUtil {
-/*
-			config.setProperty("hibernate.dialect",
-					"org.hibernate.dialect.HSQLDialect");
-			config.setProperty("hibernate.connection.driver_class",
-					"org.hsqldb.jdbcDriver");
-			config.setProperty("hibernate.connection.url",
-					"jdbc:hsqldb:mem:demodb");
-			config.setProperty("hibernate.connection.username", "sa");
-			config.setProperty("hibernate.connection.password", "");
-			config.setProperty("hibernate.connection.pool_size", "1");
-			config.setProperty("hibernate.connection.autocommit", "true");
-			config.setProperty("hibernate.cache.provider_class",
-					"org.hibernate.cache.NoCacheProvider");
-			config.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-			config.setProperty("hibernate.show_sql", "true");
-			config.setProperty("hibernate.transaction.factory_class",
-					"org.hibernate.transaction.JDBCTransactionFactory");
-			config.setProperty("hibernate.current_session_context_class",
-					"thread");
-
-			// Add your mapped classes here:
-			config.addAnnotatedClass(MockObject.class);
-*/
 	private static final SessionFactory sessionFactory = buildSessionFactory();
 
 	private static SessionFactory buildSessionFactory() {
 		try {
 			// Create the SessionFactory from hibernate.cfg.xml
 			final Configuration configuration = new Configuration();
+//			configuration.setProperty("hibernate.show_sql", "true");
+
 			return configuration.configure()
 					.addAnnotatedClass(Cat.class)
 					.addAnnotatedClass(Kitten.class)
