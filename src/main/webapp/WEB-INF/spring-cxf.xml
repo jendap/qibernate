@@ -28,9 +28,9 @@
 
 
 
-	<bean id="catService" class="cz.querity.qibernate.spring.service.CatServiceImpl" />
-	<bean id="catServiceRS" class="cz.querity.qibernate.spring.webservice.CatServiceRSImpl" />
-	<bean id="catServiceWS" class="cz.querity.qibernate.spring.webservice.CatServiceWSImpl" />
+	<bean id="catService" class="com.github.jendap.qibernate.spring.service.CatServiceImpl" />
+	<bean id="catServiceRS" class="com.github.jendap.qibernate.spring.webservice.CatServiceRSImpl" />
+	<bean id="catServiceWS" class="com.github.jendap.qibernate.spring.webservice.CatServiceWSImpl" />
 
 
 

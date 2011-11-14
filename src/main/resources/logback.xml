@@ -35,7 +35,7 @@
 	<logger name="org.hibernate.cache" level="DEBUG" />
 <!--	<logger name="org.hibernate.*" level="INFO" />-->
 
-<!--	<logger name="cz.querity" additivity="false">-->
+<!--	<logger name="com.github.jendap.qibernate" additivity="false">-->
 <!--		<appender-ref ref="MRFILE" />-->
 <!--	</logger>-->
 

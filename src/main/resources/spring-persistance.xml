@@ -15,7 +15,7 @@
 	<context:annotation-config />
 
 	<!--  tell spring where to find the beans -->
-	<context:component-scan base-package="cz.querity.qibernate" />
+	<context:component-scan base-package="com.github.jendap.qibernate" />
 
 	<tx:annotation-driven />
 
@@ -23,7 +23,7 @@
 
 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
-	<jpa:repositories base-package="cz.querity.qibernate.spring.repository" />
+	<jpa:repositories base-package="com.github.jendap.qibernate.spring.repository" />
 
 
 
@@ -57,9 +57,9 @@
 <!-- 		</property> -->
 <!-- 		<property name="annotatedClasses"> -->
 <!-- 			<list> -->
-<!-- 				<value>cz.querity.qibernate.model.Cat</value> -->
-<!-- 				<value>cz.querity.qibernate.model.Kitten</value> -->
-<!-- 				<value>cz.querity.qibernate.model.Nest</value> -->
+<!-- 				<value>com.github.jendap.qibernate.model.Cat</value> -->
+<!-- 				<value>com.github.jendap.qibernate.model.Kitten</value> -->
+<!-- 				<value>com.github.jendap.qibernate.model.Nest</value> -->
 <!-- 			</list> -->
 <!-- 		</property> -->
 <!-- 	</bean> -->

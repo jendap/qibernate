@@ -9,16 +9,16 @@
 
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 
-	<bean id="catServiceWS" class="cz.querity.qibernate.spring.webservice.CatServiceWSImpl" />
+	<bean id="catServiceWS" class="com.github.jendap.qibernate.spring.webservice.CatServiceWSImpl" />
 
 	<bean id="proxyFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
 		<property name="serviceClass"
-			value="cz.querity.qibernate.spring.webservice.CatServiceWS" />
+			value="com.github.jendap.qibernate.spring.webservice.CatServiceWS" />
 		<property name="address" value="local://CatServiceWSTest" />
 	</bean>
 
 	<jaxws:server id="CatServiceWSTestServerBean"
-		serviceClass="cz.querity.qibernate.spring.webservice.CatServiceWSImpl"
+		serviceClass="com.github.jendap.qibernate.spring.webservice.CatServiceWSImpl"
 		address="local://CatServiceWSTest">
 	</jaxws:server>
 </beans>

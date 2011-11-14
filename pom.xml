@@ -2,14 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>cz.querity</groupId>
+	<groupId>com.github.jendap</groupId>
 	<artifactId>qibernate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>qibernate</name>
 	<description>Qocka for President!</description>
-	<url>http://qibernate.querity.cz</url>
+	<url>https://github.com/jendap/qibernate</url>
 
 	<scm>
 		<connection>scm:git:git@github.com:jendap/qibernate.git</connection>
@@ -29,11 +29,6 @@
 			<timezone>+1</timezone>
 		</developer>
 	</developers>
-
-	<organization>
-		<name>Querity</name>
-		<url>http://querity.cz</url>
-	</organization>
 
 	<licenses>
 		<license>
@@ -321,7 +316,7 @@
 					<arguments>
 						<argument>-classpath</argument>
 						<classpath />
-						<argument>cz.querity.qibernate.Qibernate</argument>
+						<argument>com.github.jendap.qibernate.Qibernate</argument>
 					</arguments>
 				</configuration>
 			</plugin>
