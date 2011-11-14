@@ -48,7 +48,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<generatedSourcesDirectory>${project.build.directory}/generated-sources/annotations</generatedSourcesDirectory>
+		<generatedAnnotationsDirectory>${project.build.directory}/generated-sources/annotations</generatedAnnotationsDirectory>
 
 		<lombok.version>0.9.3</lombok.version>
 		<slf4j.version>1.6.1</slf4j.version>
@@ -270,6 +270,7 @@
 <!--   in -> java compiler -> annotation processing -> -->
 <!--     check "enable project specifing settings" -->
 <!--     set "generated sources directory" to "target/generated-sources/annotations" -->
+<!--     add "defaultOverwrite = true" APT option -->
 <!--   in -> java compiler -> annotation processing -> annotation path -->
 <!--     check "enable project specifing settings" -->
 <!--     add following: -->
@@ -366,7 +367,7 @@
 						</goals>
 						<configuration>
 							<sources>
-								<source>${project.build.directory}/generated-sources/annotations</source>
+								<source>${generatedAnnotationsDirectory}</source>
 							</sources>
 						</configuration>
 					</execution>
