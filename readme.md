@@ -15,6 +15,7 @@ History
 This project was started as show how hibernate works. It was done for
 people from small company called Querity, hence the Q. It evolved into
 into showcase of much more technologies:
+
 * hibernate / jpa
   - hql
   - jpa query api

@@ -21,8 +21,8 @@
 	</modules>
 
 	<scm>
+		<url>https://github.com/jendap/qibernate.git</url>
 		<connection>scm:git:git@github.com:jendap/qibernate.git</connection>
-		<url>scm:git:git@github.com:jendap/qibernate.git</url>
 		<developerConnection>scm:git:git@github.com:jendap/qibernate.git</developerConnection>
 	</scm>
 
@@ -115,7 +115,6 @@
 					<encoding>${character.encoding}</encoding>
 					<showDeprecation>true</showDeprecation>
 					<showWarnings>true</showWarnings>
-					<compilerArgument>-AaddGeneratedAnnotation=TRUE</compilerArgument>
 				</configuration>
 			</plugin>
 			<plugin>
