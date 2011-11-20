@@ -12,6 +12,8 @@
 	<url>https://github.com/jendap/qibernate</url>
 
 	<modules>
+		<module>qibernate-model</module>
+		<module>qibernate-jpa</module>
 		<module>qibernate-hibernate</module>
 		<module>qibernate-genericdao</module>
 		<module>qibernate-querydsl</module>

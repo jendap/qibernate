@@ -19,9 +19,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import com.github.jendap.qibernate.validator.ValidKitten;
 
 
@@ -29,7 +26,6 @@ import com.github.jendap.qibernate.validator.ValidKitten;
 @NoArgsConstructor
 @Entity
 @Cacheable
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Table(name = "Kitten")
 @ValidKitten
 @ToString(of = "id")

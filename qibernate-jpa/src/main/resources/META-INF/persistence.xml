@@ -33,10 +33,9 @@
 			<!-- Enable query and second-level cache -->
 			<property name="hibernate.cache.use_second_level_cache" value="true" />
 			<property name="hibernate.cache.use_query_cache" value="true" />
-			<property name="hibernate.cache.provider_class"
-					value="org.hibernate.cache.EhCacheProvider"/>
 			<property name="hibernate.cache.region.factory_class"
-					value="net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory" />
+					value="org.hibernate.cache.infinispan.InfinispanRegionFactory"/>
+			<property name="hibernate.cache.infinispan.cachemanager" value="java:CacheManager" />
 			<property name="hibernate.cache.default_cache_concurrency_strategy" value="nonstrict-read-write" />
 			<property name="javax.persistence.sharedCache.mode" value="DISABLE_SELECTIVE" />
 

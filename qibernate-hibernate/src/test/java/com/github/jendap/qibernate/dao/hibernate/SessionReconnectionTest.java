@@ -1,4 +1,4 @@
-package com.github.jendap.qibernate.dao;
+package com.github.jendap.qibernate.dao.hibernate;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,6 +13,7 @@ import org.junit.Test;
 
 import com.github.jendap.qibernate.HibernateUtil;
 import com.github.jendap.qibernate.dao.CatDAO;
+import com.github.jendap.qibernate.dao.CatDAOTestFixtures;
 import com.github.jendap.qibernate.dao.hibernate.CatDAOCriteriaAPIImpl;
 import com.github.jendap.qibernate.model.Cat;
 import com.github.jendap.qibernate.model.Kitten;
@@ -20,19 +21,21 @@ import com.github.jendap.qibernate.model.Kitten;
 
 public class SessionReconnectionTest {
 	private static SessionFactory sessionFactory;
+	private static CatDAOHibernateTestFixtures catDAOHibernateTestFixtures;
 	private static CatDAOTestFixtures fixtures;
 
 	@BeforeClass
 	public static void setUpClass() {
 		sessionFactory = HibernateUtil.getSessionFactory();
-
 		fixtures = new CatDAOTestFixtures("SessionReconnectionTest");
-		fixtures.createFixtures(sessionFactory);
+
+		catDAOHibernateTestFixtures = new CatDAOHibernateTestFixtures(sessionFactory, fixtures);
+		catDAOHibernateTestFixtures.createFixtures();
 	}
 
 	@AfterClass
 	public static void tearDownClass() {
-		fixtures.removeFixtures(sessionFactory);
+		catDAOHibernateTestFixtures.removeFixtures();
 	}
 
 	private Cat fetchCat() {

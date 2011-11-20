@@ -7,11 +7,11 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 //import org.springframework.test.context.transaction.TransactionConfiguration;
 //import org.springframework.transaction.annotation.Transactional;
 
+
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration({ "classpath:applicationContext/applicationContext-*.xml" })
 @ContextConfiguration({ "classpath:spring-persistance.xml" })
 //@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 //@Transactional
 public class TransactionalTestBase extends AbstractTransactionalJUnit4SpringContextTests {
-
 }

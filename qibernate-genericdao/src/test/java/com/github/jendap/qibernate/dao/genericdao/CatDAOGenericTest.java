@@ -4,18 +4,14 @@ import org.hibernate.context.ManagedSessionContext;
 import org.junit.Test;
 
 import com.github.jendap.qibernate.dao.CatDAOTestBase;
+import com.github.jendap.qibernate.dao.hibernate.CatDAOHibernateTestBase;
 
 
-public class CatDAOGenericTest extends CatDAOTestBase {
+public class CatDAOGenericTest extends CatDAOHibernateTestBase {
 	@Test
 	public void testCatDAOGenericHibernateDAO() {
 		ManagedSessionContext.bind((org.hibernate.classic.Session) this.getSession());
-		this.catDaoTest(new CatDAOGenericHibernateImpl(sessionFactory));
+		CatDAOTestBase.catDaoTest(fixtures, new CatDAOGenericHibernateImpl(sessionFactory));
 		ManagedSessionContext.unbind(sessionFactory);
-	}
-
-	@Test
-	public void testCatDAOGenericJPADAO() {
-		this.catDaoTest(new CatDAOGenericJPAImpl(sessionFactory, CatDAOGenericTest.entityManager));
 	}
 }

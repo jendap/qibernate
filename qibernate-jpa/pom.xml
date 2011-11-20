@@ -7,11 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
-	<artifactId>qibernate-hibernate</artifactId>
-
-	<properties>
-		<main.class>com.github.jendap.qibernate.QibernateMain</main.class>
-	</properties>
+	<artifactId>qibernate-jpa</artifactId>
 
 	<dependencies>
 		<dependency>
@@ -40,7 +36,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-ehcache</artifactId>
+			<artifactId>hibernate-infinispan</artifactId>
 			<version>3.6.7.Final</version>
 		</dependency>
 		<dependency>
@@ -49,12 +45,6 @@
 			<version>4.2.0.Final</version>
 		</dependency>
 
-		<!-- database, connection pool and cache -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.hsqldb</groupId> -->
-		<!-- <artifactId>hsqldb</artifactId> -->
-		<!-- <version>2.2.4</version> -->
-		<!-- </dependency> -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -65,40 +55,5 @@
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1.2</version>
 		</dependency>
-		<dependency>
-			<groupId>net.sf.ehcache</groupId>
-			<artifactId>ehcache-core</artifactId>
-			<version>2.4.6</version>
-		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<mainClass>${main.class}</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.2.1</version>
-				<configuration>
-					<executable>java</executable>
-					<arguments>
-						<argument>-classpath</argument>
-						<classpath />
-						<argument>${main.class}</argument>
-					</arguments>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>

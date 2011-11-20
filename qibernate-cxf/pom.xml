@@ -16,13 +16,6 @@
 			<artifactId>qibernate-spring</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.github.jendap</groupId>
-			<artifactId>qibernate-spring</artifactId>
-			<type>test-jar</type>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
 
 		<!-- apache cxf -->
 		<dependency>
@@ -61,7 +54,7 @@
 		<!-- test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.test</artifactId>
+			<artifactId>spring-test</artifactId>
 			<version>3.0.6.RELEASE</version>
 			<scope>test</scope>
 		</dependency>

@@ -4,15 +4,16 @@ import org.junit.Test;
 
 import com.github.jendap.qibernate.dao.CatDAOTestBase;
 
-
-public class CatDAOHibernateTest extends CatDAOTestBase {
+public class CatDAOHibernateTest extends CatDAOHibernateTestBase {
 	@Test
 	public void testCatDAOCriteriaAPI() {
-		this.catDaoTest(new CatDAOCriteriaAPIImpl(this.getSession()));
+		CatDAOTestBase.catDaoTest(CatDAOHibernateTestBase.fixtures,
+				new CatDAOCriteriaAPIImpl(this.getSession()));
 	}
 
 	@Test
 	public void testCatDAOHQL() {
-		this.catDaoTest(new CatDAOHQLImpl(this.getSession()));
+		CatDAOTestBase.catDaoTest(CatDAOHibernateTestBase.fixtures,
+				new CatDAOHQLImpl(this.getSession()));
 	}
 }

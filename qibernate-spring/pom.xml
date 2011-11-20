@@ -12,24 +12,24 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.github.jendap</groupId>
-			<artifactId>qibernate-hibernate</artifactId>
+			<artifactId>qibernate-jpa</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 		<!-- spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.context.support</artifactId>
+			<artifactId>spring-context-support</artifactId>
 			<version>3.0.6.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.orm</artifactId>
+			<artifactId>spring-orm</artifactId>
 			<version>3.0.6.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.oxm</artifactId>
+			<artifactId>spring-oxm</artifactId>
 			<version>3.0.6.RELEASE</version>
 		</dependency>
 		<dependency>
@@ -41,7 +41,7 @@
 		<!-- test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.test</artifactId>
+			<artifactId>spring-test</artifactId>
 			<version>3.0.6.RELEASE</version>
 			<scope>test</scope>
 		</dependency>

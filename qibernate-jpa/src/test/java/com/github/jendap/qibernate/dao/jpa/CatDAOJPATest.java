@@ -5,9 +5,9 @@ import org.junit.Test;
 import com.github.jendap.qibernate.dao.CatDAOTestBase;
 
 
-public class CatDAOJPATest extends CatDAOTestBase {
+public class CatDAOJPATest extends CatDAOJPATestBase {
 	@Test
 	public void testCatDAOJPA() {
-		this.catDaoTest(new CatDAOJPAImpl(CatDAOTestBase.entityManager));
+		CatDAOTestBase.catDaoTest(fixtures, new CatDAOJPAImpl(this.getEntityManager()));
 	}
 }
