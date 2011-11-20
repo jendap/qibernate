@@ -4,36 +4,52 @@
 	version="2.0">
 	<persistence-unit name="myPersistenceUnit" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-<!-- 		<jta-data-source>java:/DefaultDS</jta-data-source> -->
-<!-- 		<mapping-file>ormap.xml</mapping-file> -->
-<!-- 		<jar-file>qibernate.jar</jar-file> -->
-<!-- 		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode> -->
-<!-- 		<validation-mode>CALLBACK</validation-mode> -->
+		<!-- <jta-data-source>java:/DefaultDS</jta-data-source> -->
+		<!-- <mapping-file>ormap.xml</mapping-file> -->
+		<!-- <jar-file>qibernate.jar</jar-file> -->
+		<!-- <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode> -->
+		<!-- <validation-mode>CALLBACK</validation-mode> -->
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="update" />
-
+			<!-- Connection properties -->
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:memFS:/tmp/foo;MVCC=TRUE" />
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:h2:memFS:/tmp/foo;MVCC=TRUE" />
+
+			<!-- Hibernate SQL dialect -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 
+			<!-- Misc hibernate options -->
 			<property name="hibernate.max_fetch_depth" value="3" />
-<!-- 			<property name="hibernate.show_sql" value="true" /> -->
 
-<!-- 			<property name="c3p0.acquire_increment">1</property> -->
-<!--			<property name="hibernate.c3p0.min_size" value="5" /> -->
-<!--			<property name="hibernate.c3p0.max_size" value="20" /> -->
-<!--			<property name="hibernate.c3p0.timeout" value="300" /> -->
-<!--			<property name="hibernate.c3p0.max_statements" value="50" /> -->
-<!--			<property name="hibernate.c3p0.idle_test_period" value="3000" /> -->
-			
-			<property name="hibernate.cache.use_second_level_cache" value="false" />
-			<property name="hibernate.cache.use_query_cache" value="false" />
-<!-- 			<property name="hibernate.cache.CacheProvider" -->
-<!-- 					value="org.hibernate.cache.EhCacheProvider" /> -->
-<!-- 			<property name="hibernate.cache.region.factory_class" -->
-<!-- 					value="net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory" /> -->
+			<!-- Thread pool configuration using c3p0 -->
+			<property name="c3p0.acquire_increment" value="1" />
+			<property name="hibernate.c3p0.idle_test_period" value="30" />
+			<property name="hibernate.c3p0.min_size" value="4" />
+			<property name="hibernate.c3p0.max_size" value="16" />
+			<property name="hibernate.c3p0.max_statements" value="16" />
+			<property name="hibernate.c3p0.timeout" value="30" />
+
+			<!-- Enable query and second-level cache -->
+			<property name="hibernate.cache.use_second_level_cache" value="true" />
+			<property name="hibernate.cache.use_query_cache" value="true" />
+			<property name="hibernate.cache.provider_class"
+					value="org.hibernate.cache.EhCacheProvider"/>
+			<property name="hibernate.cache.region.factory_class"
+					value="net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory" />
+			<property name="hibernate.cache.default_cache_concurrency_strategy" value="nonstrict-read-write" />
+			<property name="javax.persistence.sharedCache.mode" value="DISABLE_SELECTIVE" />
+
+			<!-- Echo all executed SQL to stdout -->
+			<!-- <property name="hibernate.show_sql" value="true" /> -->
+			<!-- <property name="hibernate.format_sql" value="true" /> -->
+			<!-- <property name="hibernate.use_sql_comments" value="true" /> -->
+
+			<!-- Enable hibernate JMX monitoring -->
+			<property name="hibernate.generate_statistics" value="true" />
+
+			<!-- Drop and re-create the database schema on startup -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 		</properties>
 	</persistence-unit>
 </persistence>

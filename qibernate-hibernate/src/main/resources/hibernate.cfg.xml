@@ -10,47 +10,51 @@
 		<property name="connection.url">jdbc:h2:memFS:/tmp/foo;MVCC=TRUE</property>
 		<property name="connection.username">sa</property>
 		<property name="connection.password"></property>
-		<!-- <property name="connection.pool_size">4</property> -->
 		<!-- <property name="connection.autocommit">true</property> -->
 		<!-- <property name="connection.isolation">true</property> -->
 
-		<!-- SQL dialect -->
+		<!-- Hibernate SQL dialect -->
 		<property name="dialect">org.hibernate.dialect.H2Dialect</property>
 
-		<!-- Enable Hibernate's automatic session context management -->
+		<!-- Hibernate session context management -->
 		<property name="current_session_context_class">managed</property>
 		<!-- <property name="current_session_context_class">thread</property> -->
 
-		<!-- Transaction properties -->
+		<!-- Hibernate Transaction properties -->
 		<!-- <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property> -->
 		<!-- <property name="transaction.auto_close_session">true</property> -->
 
+		<!-- Misc hibernate options -->
+		<property name="hibernate.max_fetch_depth">3</property>
+
 		<!-- Thread pool configuration using c3p0 -->
 		<property name="c3p0.acquire_increment">1</property>
-		<property name="c3p0.idle_test_period">3</property> <!-- seconds -->
-		<property name="c3p0.min_size">1</property>
-		<property name="c3p0.max_size">3</property>
-		<property name="c3p0.max_statements">0</property>
-		<property name="c3p0.timeout">3</property> <!-- seconds -->
+		<property name="c3p0.idle_test_period">30</property> <!-- seconds -->
+		<property name="c3p0.min_size">4</property>
+		<property name="c3p0.max_size">16</property>
+		<property name="c3p0.max_statements">16</property>
+		<property name="c3p0.timeout">30</property> <!-- seconds -->
 
 		<!-- Enable query and second-level cache -->
 		<property name="cache.use_second_level_cache">true</property>
 		<property name="cache.use_query_cache">true</property>
 		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
 		<property name="cache.region.factory_class">net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory</property>
+		<property name="cache.default_cache_concurrency_strategy">nonstrict-read-write</property>
+		<property name="javax.persistence.sharedCache.mode">DISABLE_SELECTIVE</property>
 
 		<!-- Echo all executed SQL to stdout -->
 		<!-- <property name="show_sql">true</property> -->
 		<!-- <property name="format_sql">true</property> -->
 		<!-- <property name="use_sql_comments">true</property> -->
 
-		<!-- Enable JMX monitoring -->
+		<!-- Enable hibernate JMX monitoring -->
 		<property name="generate_statistics">true</property>
 
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hbm2ddl.auto">update</property>
 
-		<!-- hibernate xml based entity configuration -->
+		<!-- Hibernate xml based entity configuration -->
 		<!-- <mapping resource="org/hibernate/tutorial/domain/Event.hbm.xml"/> -->
 	</session-factory>
 </hibernate-configuration>
