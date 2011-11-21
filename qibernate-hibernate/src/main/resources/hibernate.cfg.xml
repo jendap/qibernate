@@ -52,7 +52,8 @@
 		<property name="generate_statistics">true</property>
 
 		<!-- Drop and re-create the database schema on startup -->
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create-drop</property>
+		<property name="hbm2ddl.import_files">/import.sql</property>
 
 		<!-- Hibernate xml based entity configuration -->
 		<!-- <mapping resource="org/hibernate/tutorial/domain/Event.hbm.xml"/> -->

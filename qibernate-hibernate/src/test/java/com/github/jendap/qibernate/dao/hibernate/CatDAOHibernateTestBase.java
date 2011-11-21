@@ -1,7 +1,6 @@
 package com.github.jendap.qibernate.dao.hibernate;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,10 +15,8 @@ import com.github.jendap.qibernate.dao.CatDAOTestFixtures;
 
 
 @Data
-@EqualsAndHashCode(callSuper = false)
 public class CatDAOHibernateTestBase {
 	protected static SessionFactory sessionFactory;
-	protected static CatDAOHibernateTestFixtures catDAOHibernateTestFixtures;
 	protected static CatDAOTestFixtures fixtures;
 
 	private Session session;
@@ -28,16 +25,12 @@ public class CatDAOHibernateTestBase {
 	@BeforeClass
 	public static void setUpClass() {
 		sessionFactory = HibernateUtil.getSessionFactory();
-		fixtures = new CatDAOTestFixtures("CatDAOHibernate");
-
-		catDAOHibernateTestFixtures = new CatDAOHibernateTestFixtures(sessionFactory, fixtures);
-		catDAOHibernateTestFixtures.createFixtures();
+		fixtures = new CatDAOTestFixtures("CatDAO");
 	}
 
 	@AfterClass
 	public static void tearDownClass() {
-		catDAOHibernateTestFixtures.removeFixtures();
-		sessionFactory.close();
+//		sessionFactory.close();
 	}
 
 	@Before

@@ -6,22 +6,18 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
-import com.github.jendap.qibernate.dao.CatDAOTestBase;
 import com.github.jendap.qibernate.dao.CatDAOTestFixtures;
 
 
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class CatDAOJPATestBase extends CatDAOTestBase {
+public class CatDAOJPATestBase {
 	protected static EntityManagerFactory entityManagerFactory;
-	protected static CatDAOJPATestFixtures catDAOJPATestFixtures;
 	protected static CatDAOTestFixtures fixtures;
 
 	private EntityManager entityManager;
@@ -30,15 +26,11 @@ public class CatDAOJPATestBase extends CatDAOTestBase {
 	@BeforeClass
 	public static void setUpClass() {
 		entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit");
-		fixtures = new CatDAOTestFixtures("CatDAOJPA");
-
-		catDAOJPATestFixtures = new CatDAOJPATestFixtures(entityManagerFactory, fixtures);
-		catDAOJPATestFixtures.createFixtures();
+		fixtures = new CatDAOTestFixtures("CatDAO");
 	}
 
 	@AfterClass
 	public static void tearDownClass() {
-		catDAOJPATestFixtures.removeFixtures();
 		entityManagerFactory.close();
 	}
 

@@ -21,21 +21,17 @@ import com.github.jendap.qibernate.model.Kitten;
 
 public class SessionReconnectionTest {
 	private static SessionFactory sessionFactory;
-	private static CatDAOHibernateTestFixtures catDAOHibernateTestFixtures;
 	private static CatDAOTestFixtures fixtures;
 
 	@BeforeClass
 	public static void setUpClass() {
 		sessionFactory = HibernateUtil.getSessionFactory();
-		fixtures = new CatDAOTestFixtures("SessionReconnectionTest");
-
-		catDAOHibernateTestFixtures = new CatDAOHibernateTestFixtures(sessionFactory, fixtures);
-		catDAOHibernateTestFixtures.createFixtures();
+		fixtures = new CatDAOTestFixtures("CatDAO");
 	}
 
 	@AfterClass
 	public static void tearDownClass() {
-		catDAOHibernateTestFixtures.removeFixtures();
+//		sessionFactory.close();
 	}
 
 	private Cat fetchCat() {
@@ -102,7 +98,7 @@ public class SessionReconnectionTest {
 		final Transaction transaction = session.beginTransaction();
 
 		final Kitten mergedKitten = (Kitten) session.merge(kitten);
-		assertEquals("SessionReconnectionTestnest0", mergedKitten.getCat().getNest().getName());
+		assertEquals("CatDAOnest0", mergedKitten.getCat().getNest().getName());
 
 		transaction.rollback();
 		session.close();
