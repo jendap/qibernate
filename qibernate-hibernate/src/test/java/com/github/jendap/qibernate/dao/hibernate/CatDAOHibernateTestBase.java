@@ -1,41 +1,26 @@
 package com.github.jendap.qibernate.dao.hibernate;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 
 import com.github.jendap.qibernate.HibernateUtil;
-import com.github.jendap.qibernate.dao.CatDAOTestFixtures;
+import com.github.jendap.qibernate.dao.CatDAOTestBase;
 
 
 @Data
-public class CatDAOHibernateTestBase {
-	protected static SessionFactory sessionFactory;
-	protected static CatDAOTestFixtures fixtures;
-
+@EqualsAndHashCode(callSuper = true)
+public class CatDAOHibernateTestBase extends CatDAOTestBase {
 	private Session session;
 	private Transaction transaction;
 
-	@BeforeClass
-	public static void setUpClass() {
-		sessionFactory = HibernateUtil.getSessionFactory();
-		fixtures = new CatDAOTestFixtures("CatDAO");
-	}
-
-	@AfterClass
-	public static void tearDownClass() {
-//		sessionFactory.close();
-	}
-
 	@Before
 	public void setUp() {
-		this.session = sessionFactory.openSession();
+		this.session = HibernateUtil.getSessionFactory().openSession();
 		this.transaction = this.session.beginTransaction();
 	}
 

@@ -6,19 +6,20 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
-import com.github.jendap.qibernate.dao.CatDAOTestFixtures;
+import com.github.jendap.qibernate.dao.CatDAOTestBase;
 
 
 @Data
-public class CatDAOJPATestBase {
-	protected static EntityManagerFactory entityManagerFactory;
-	protected static CatDAOTestFixtures fixtures;
+@EqualsAndHashCode(callSuper = true)
+public class CatDAOJPATestBase extends CatDAOTestBase {
+	private static EntityManagerFactory entityManagerFactory;
 
 	private EntityManager entityManager;
 	private EntityTransaction entityTransaction;
@@ -26,7 +27,6 @@ public class CatDAOJPATestBase {
 	@BeforeClass
 	public static void setUpClass() {
 		entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit");
-		fixtures = new CatDAOTestFixtures("CatDAO");
 	}
 
 	@AfterClass

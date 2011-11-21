@@ -5,44 +5,27 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.github.jendap.qibernate.HibernateUtil;
 import com.github.jendap.qibernate.dao.CatDAO;
-import com.github.jendap.qibernate.dao.CatDAOTestFixtures;
+import com.github.jendap.qibernate.dao.CatDAOTestBase;
 import com.github.jendap.qibernate.dao.hibernate.CatDAOCriteriaAPIImpl;
 import com.github.jendap.qibernate.model.Cat;
 import com.github.jendap.qibernate.model.Kitten;
 
 
-public class SessionReconnectionTest {
-	private static SessionFactory sessionFactory;
-	private static CatDAOTestFixtures fixtures;
-
-	@BeforeClass
-	public static void setUpClass() {
-		sessionFactory = HibernateUtil.getSessionFactory();
-		fixtures = new CatDAOTestFixtures("CatDAO");
-	}
-
-	@AfterClass
-	public static void tearDownClass() {
-//		sessionFactory.close();
-	}
-
+public class SessionReconnectionTest extends CatDAOTestBase {
 	private Cat fetchCat() {
-		final Session session = sessionFactory.openSession();
+		final Session session = HibernateUtil.getSessionFactory().openSession();
 		final Transaction transaction = session.beginTransaction();
 
 		final CatDAO dao = new CatDAOCriteriaAPIImpl(session);
-		final List<Cat> catsByName = dao.findByName(fixtures.getCat0().getName());
+		final List<Cat> catsByName = dao.findByName(this.getCat0().getName());
 		assertEquals(1, catsByName.size());
 		final Cat cat = catsByName.get(0);
-		assertEquals(fixtures.getCat0().getName(), cat.getName());
+		assertEquals(this.getCat0().getName(), cat.getName());
 
 		transaction.rollback();
 		session.close();
@@ -51,7 +34,7 @@ public class SessionReconnectionTest {
 	}
 
 	private Kitten fetchFirstKitten(final Cat cat) {
-		final Session session = sessionFactory.openSession();
+		final Session session = HibernateUtil.getSessionFactory().openSession();
 		final Transaction transaction = session.beginTransaction();
 
 		session.update(cat);
@@ -63,6 +46,17 @@ public class SessionReconnectionTest {
 		return kitten;
 	}
 
+	private void mergeAndTestKitten(final Kitten kitten) {
+		final Session session = HibernateUtil.getSessionFactory().openSession();
+		final Transaction transaction = session.beginTransaction();
+
+		final Kitten mergedKitten = (Kitten) session.merge(kitten);
+		assertEquals(this.getNest0().getName(), mergedKitten.getCat().getNest().getName());
+
+		transaction.rollback();
+		session.close();
+	}
+
 	@Test
 	public void testSimpleCatFetch() {
 		this.fetchCat();
@@ -72,7 +66,7 @@ public class SessionReconnectionTest {
 	public void testFetchFirstKittenFromCat() {
 		final Cat cat = this.fetchCat();
 		final Kitten kitten = this.fetchFirstKitten(cat);
-		assertEquals(fixtures.getKitten0().getPrice(), kitten.getPrice());
+		assertEquals(this.getKitten0().getPrice(), kitten.getPrice());
 	}
 
 	@Test
@@ -87,20 +81,9 @@ public class SessionReconnectionTest {
 	public void testMergeModifiedKitten() {
 		final Cat cat = this.fetchCat();
 		final Kitten kitten = this.fetchFirstKitten(cat);
-		assertEquals(fixtures.getKitten0().getPrice(), kitten.getPrice());
+		assertEquals(this.getKitten0().getPrice(), kitten.getPrice());
 
 		kitten.setPrice(1111);
 		this.mergeAndTestKitten(kitten);
-	}
-
-	private void mergeAndTestKitten(final Kitten kitten) {
-		final Session session = sessionFactory.openSession();
-		final Transaction transaction = session.beginTransaction();
-
-		final Kitten mergedKitten = (Kitten) session.merge(kitten);
-		assertEquals("CatDAOnest0", mergedKitten.getCat().getNest().getName());
-
-		transaction.rollback();
-		session.close();
 	}
 }
