@@ -33,21 +33,18 @@ public class KittenValidationTest {
 
 	@Before
 	public void setUp() {
-		final Nest nest0 = new Nest("foo", "bar");
-		this.cat0 = new Cat("roztleskavacka", null, 5);
-		this.cat1 = new Cat("foo", nest0, 50);
+		final Nest nest0 = new Nest("nest0.name", "nest0.address");
+		this.cat0 = new Cat("cat0.name", nest0, 5, 10);
+		this.cat1 = new Cat("cat1.name", null, 10, 10);
 	}
 
 	@Test
 	public void testKittenValidation() {
-		final Kitten validKitten = new Kitten();
-		validKitten.setCat(this.cat0);
+		final Kitten validKitten = new Kitten(this.cat0, 1);
 		final Set<ConstraintViolation<Kitten>> validKittenViolation = validator.validate(validKitten);
 		assertEquals(0, validKittenViolation.size());
 
-		final Kitten invalidKitten = new Kitten();
-		invalidKitten.setPrice(-100);
-		invalidKitten.setCat(this.cat1);
+		final Kitten invalidKitten = new Kitten(this.cat1, -100);
 		final Set<ConstraintViolation<Kitten>> invalidKittenViolation = validator.validate(invalidKitten);
 		assertEquals(2, invalidKittenViolation.size());
 	}

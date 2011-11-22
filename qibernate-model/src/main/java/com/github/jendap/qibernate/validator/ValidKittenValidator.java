@@ -29,14 +29,14 @@ public class ValidKittenValidator implements
 			return true;
 		}
 
-		if (value.getCat().getName().contains("kavacka")) {
-			return true;
-		} else {
+		if (value.getCat().getNest() == null) {
 			context.disableDefaultConstraintViolation();
 			context.buildConstraintViolationWithTemplate(
-					"{com.github.jendap.qibernate.constraints.ValidKitten.CheerleadersOnly}")
+					"{com.github.jendap.qibernate.constraints.ValidKitten.HomelessKitten}")
 					.addConstraintViolation();
 			return false;
+		} else {
+			return true;
 		}
 	}
 }

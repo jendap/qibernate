@@ -20,25 +20,25 @@ public class CatDAOTestBase {
 	private final Kitten kitten1;
 
 	public CatDAOTestBase() {
-		this.nest0 = new Nest("CatDAOnest0", "CatDAOhere0");
-		this.cat0 = new Cat("CatDAOtleskavacka0", this.nest0, 0);
-		this.cat1 = new Cat("CatDAOtleskavacka1", this.nest0, 1);
+		this.nest0 = new Nest("nest0.name", "nest0.address");
+		this.cat0 = new Cat("cat0.name", this.nest0, 0, 10);
+		this.cat1 = new Cat("cat1.name", this.nest0, 1, 10);
 		this.kitten0 = new Kitten(this.cat0, 0);
 		this.kitten1 = new Kitten(this.cat0, 1);
 	}
 
-	public void assertCheerleaderCat(final List<Cat> cheerleaders) {
-		assertEquals(1, cheerleaders.size());
-		final Cat first = cheerleaders.get(0);
+	public void assertOlnyCat0Found(final List<Cat> cats) {
+		assertEquals(1, cats.size());
+		final Cat first = cats.get(0);
 		assertEquals(this.getCat0().getName(), first.getName());
 	}
 
 	public void catDaoTest(final CatDAO dao) {
 		final List<Cat> catsByName = dao.findByName(this.getCat0().getName());
-		this.assertCheerleaderCat(catsByName);
+		this.assertOlnyCat0Found(catsByName);
 		final List<Cat> catsByAge = dao.findByAge(this.getCat0().getAge(),
 				this.getCat0().getAge() + 1);
-		this.assertCheerleaderCat(catsByAge);
+		this.assertOlnyCat0Found(catsByAge);
 	}
 
 }

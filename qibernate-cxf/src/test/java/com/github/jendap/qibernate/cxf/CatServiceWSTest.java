@@ -2,8 +2,6 @@ package com.github.jendap.qibernate.cxf;
 
 import static org.junit.Assert.*;
 
-import java.io.IOException;
-
 import javax.inject.Inject;
 
 import org.junit.Test;
@@ -19,8 +17,8 @@ public class CatServiceWSTest extends AbstractJUnit4SpringContextTests {
 	private CatServiceWS serviceClient;
 
 	@Test
-	public void testClapCheerleaders() throws IOException {
-		final String response = serviceClient.clapCheerleaders();
+	public void testFeedAllStarvingCats() {
+		final String response = serviceClient.feedAllStarvingCats();
 		assertEquals("Qk", response);
 	}
 }

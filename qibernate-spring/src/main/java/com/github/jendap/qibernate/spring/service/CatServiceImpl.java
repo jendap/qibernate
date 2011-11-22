@@ -1,5 +1,7 @@
 package com.github.jendap.qibernate.spring.service;
 
+import static com.github.jendap.qibernate.model.QCat.cat;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -24,10 +26,18 @@ public class CatServiceImpl implements CatService {
 	}
 
 	@Override
-	public void clapCheerleaders() {
-		for (final Cat cat : catRepository.findAll(CatSpecs.isCheerleader())) {
-			cat.setName(cat.getName() + "tleskavacka");
-			catRepository.save(cat);
+	public void playCatsByName(final String catName, final int amount) {
+		for (final Cat aCat : catRepository.findAll(cat.name.eq(catName))) {
+			aCat.setHunger(aCat.getHunger() + amount);
+			this.save(aCat);
+		}
+	}
+
+	@Override
+	public void feedAllStarvingCats(final int starvingThreshold, final int amount) {
+		for (final Cat aCat : catRepository.findAll(CatSpecs.isStarving(starvingThreshold))) {
+			aCat.setHunger(Math.max(0, aCat.getHunger() - amount));
+			this.save(aCat);
 		}
 	}
 }

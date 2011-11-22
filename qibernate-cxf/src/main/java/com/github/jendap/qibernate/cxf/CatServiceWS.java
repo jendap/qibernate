@@ -23,5 +23,5 @@ public interface CatServiceWS {
 
 	public String newCat(@WebParam(name = "cat") final Cat cat) throws RuntimeException;
 
-	public String clapCheerleaders();
+	public String feedAllStarvingCats();
 }

@@ -44,8 +44,8 @@ public class CatServiceWSImpl implements CatServiceWS {
 	}
 
 	@Override
-	public String clapCheerleaders() {
-		this.catService.clapCheerleaders();
+	public String feedAllStarvingCats() {
+		this.catService.feedAllStarvingCats(0, 100);
 		return "Qk";
 	}
 }

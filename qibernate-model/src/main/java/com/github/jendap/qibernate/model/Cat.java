@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import lombok.Data;
@@ -50,9 +52,13 @@ public class Cat implements Serializable {
 
 	private int age;
 
-	public Cat(final String name, final Nest nest, final int age) {
+	@Min(0) @Max(100)
+	private int hunger;
+
+	public Cat(final String name, final Nest nest, final int age, final int hunger) {
 		this.name = name;
 		this.nest = nest;
 		this.age = age;
+		this.hunger = hunger;
 	}
 }

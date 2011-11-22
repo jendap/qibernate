@@ -32,6 +32,6 @@ public interface CatServiceRS {
 	public String newCat(final Cat cat) throws RuntimeException;
 
 	@GET
-	@Path("/clapcheerleaders")
-	public String clapCheerleaders();
+	@Path("/feedallstarvingcats")
+	public String feedAllStarvingCats();
 }

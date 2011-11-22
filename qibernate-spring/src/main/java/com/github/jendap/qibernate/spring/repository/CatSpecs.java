@@ -13,12 +13,12 @@ import com.github.jendap.qibernate.model.Cat_;
 
 
 public class CatSpecs {
-	public static Specification<Cat> isCheerleader() {
+	public static Specification<Cat> isStarving(final int starvingThreshold) {
 		return new Specification<Cat>() {
 			@Override
 			public Predicate toPredicate(Root<Cat> root,
 					CriteriaQuery<?> query, CriteriaBuilder cb) {
-				return cb.like(root.get(Cat_.name), "eskavacka");
+				return cb.ge(root.get(Cat_.hunger), starvingThreshold);
 			}
 		};
 	}

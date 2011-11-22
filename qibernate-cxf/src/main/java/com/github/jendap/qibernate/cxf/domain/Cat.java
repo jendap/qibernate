@@ -24,7 +24,7 @@ public class Cat {
 	private int age;
 
 	public com.github.jendap.qibernate.model.Cat toModelCat() {
-		return new com.github.jendap.qibernate.model.Cat(name, null, age);
+		return new com.github.jendap.qibernate.model.Cat(name, null, age, 0);
 	}
 
 	public static Cat fromModelCat(final com.github.jendap.qibernate.model.Cat cat) {
