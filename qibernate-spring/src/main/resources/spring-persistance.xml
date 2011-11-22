@@ -95,6 +95,8 @@
 				<prop key="hibernate.connection.url">jdbc:h2:memFS:/tmp/foo;MVCC=TRUE</prop>
 				<prop key="hibernate.connection.username">sa</prop>
 				<prop key="hibernate.connection.password"></prop>
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+				<prop key="hibernate.hbm2ddl.import_files">/import.sql</prop>
 			</props>
 		</property>
 <!-- 		<property name="loadTimeWeaver"> -->
