@@ -25,7 +25,7 @@
 		<!-- <property name="transaction.auto_close_session">true</property> -->
 
 		<!-- Misc hibernate options -->
-		<property name="hibernate.max_fetch_depth">3</property>
+		<property name="max_fetch_depth">3</property>
 
 		<!-- Thread pool configuration using c3p0 -->
 		<property name="c3p0.acquire_increment">1</property>
