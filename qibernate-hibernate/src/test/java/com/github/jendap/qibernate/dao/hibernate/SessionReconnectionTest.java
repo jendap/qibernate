@@ -73,7 +73,7 @@ public class SessionReconnectionTest extends CatDAOTestBase {
 	public void testMergeNewKitten() {
 		final Cat cat = this.fetchCat();
 
-		final Kitten kitten = new Kitten(cat, 10);
+		final Kitten kitten = new Kitten(cat, "kitten.name", 10);
 		this.mergeAndTestKitten(kitten);
 	}
 

@@ -12,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,7 +23,7 @@ public class Cat {
 	private int age;
 
 	public com.github.jendap.qibernate.model.Cat toModelCat() {
-		return new com.github.jendap.qibernate.model.Cat(name, null, age, 0);
+		return new com.github.jendap.qibernate.model.Cat(null, name, null, age, 0);
 	}
 
 	public static Cat fromModelCat(final com.github.jendap.qibernate.model.Cat cat) {

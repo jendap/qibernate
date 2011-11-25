@@ -21,10 +21,10 @@ public class CatDAOTestBase {
 
 	public CatDAOTestBase() {
 		this.nest0 = new Nest("nest0.name", "nest0.address");
-		this.cat0 = new Cat("cat0.name", this.nest0, 0, 10);
-		this.cat1 = new Cat("cat1.name", this.nest0, 1, 10);
-		this.kitten0 = new Kitten(this.cat0, 0);
-		this.kitten1 = new Kitten(this.cat0, 1);
+		this.cat0 = new Cat(null, "cat0.name", this.nest0, 0, 10);
+		this.cat1 = new Cat(null, "cat1.name", this.nest0, 1, 10);
+		this.kitten0 = new Kitten(this.cat0, "kitten0.name", 0);
+		this.kitten1 = new Kitten(this.cat0, "kitten1.name", 1);
 	}
 
 	public void assertOlnyCat0Found(final List<Cat> cats) {
