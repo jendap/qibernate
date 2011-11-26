@@ -30,7 +30,7 @@
 	<!-- jdbc -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.h2.Driver" />
-		<property name="url" value="jdbc:h2:memFS:/tmp/foo;MVCC=TRUE" />
+		<property name="url" value="jdbc:h2:memFS:/tmp/foo;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE" />
 		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean>
@@ -92,7 +92,7 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
 				<prop key="hibernate.connection.driver_class">org.h2.Driver</prop>
-				<prop key="hibernate.connection.url">jdbc:h2:memFS:/tmp/foo;MVCC=TRUE</prop>
+				<prop key="hibernate.connection.url">jdbc:h2:memFS:/tmp/foo;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE</prop>
 				<prop key="hibernate.connection.username">sa</prop>
 				<prop key="hibernate.connection.password"></prop>
 				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
