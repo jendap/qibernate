@@ -17,7 +17,6 @@
 		<module>qibernate-hibernate</module>
 		<module>qibernate-querydsl</module>
 		<module>qibernate-spring</module>
-		<module>qibernate-misc</module>
 		<module>qibernate-cxf</module>
 	</modules>
 
@@ -87,11 +86,6 @@
 		<!-- <groupId>com.google.guava</groupId> -->
 		<!-- <artifactId>guava</artifactId> -->
 		<!-- <version>10.0.1</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.googlecode.lambdaj</groupId> -->
-		<!-- <artifactId>lambdaj</artifactId> -->
-		<!-- <version>2.3.3</version> -->
 		<!-- </dependency> -->
 
 		<!-- test -->
@@ -180,11 +174,6 @@
 		<repository>
 			<id>springframework-snapshot</id>
 			<url>http://maven.springframework.org/snapshot</url>
-		</repository>
-
-		<repository>
-			<id>lambdaj</id>
-			<url>http://lambdaj.googlecode.com/svn/repo/releases/</url>
 		</repository>
 	</repositories>
 
