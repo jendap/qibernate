@@ -16,8 +16,8 @@ Eclipse
            1. Click "add variable...", select M2\_REPO
            2. Click "edit..." and add one of the followings:
              + M2\_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.0.Final/hibernate-jpa-2.0-api-1.0.0.Final.jar
-             + M2\_REPO/org/hibernate/hibernate-jpamodelgen/1.1.1.Final/hibernate-jpamodelgen-1.1.1.Final.jar
+             + M2\_REPO/org/hibernate/hibernate-jpamodelgen/1.2.0.CR1/hibernate-jpamodelgen-1.2.0.CR1.jar
              + M2\_REPO/org/hibernate/hibernate-validator-annotation-processor/4.2.0.Final/hibernate-validator-annotation-processor-4.2.0.Final.jar
              + M2\_REPO/org/hibernate/hibernate-validator/4.2.0.Final/hibernate-validator-4.2.0.Final.jar
              + M2\_REPO/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar
-             + M2\_REPO/com/mysema/querydsl/querydsl-jpa/2.2.4/querydsl-jpa-2.2.4-apt-hibernate-one-jar.jar
+             + M2\_REPO/com/mysema/querydsl/querydsl-jpa/2.3.1/querydsl-jpa-2.3.1-apt-hibernate-one-jar.jar

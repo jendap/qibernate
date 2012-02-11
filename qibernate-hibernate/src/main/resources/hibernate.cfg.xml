@@ -36,10 +36,11 @@
 		<property name="c3p0.timeout">30</property> <!-- seconds -->
 
 		<!-- Enable query and second-level cache -->
-		<property name="cache.use_second_level_cache">true</property>
 		<property name="cache.use_query_cache">true</property>
-		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
-		<property name="cache.region.factory_class">net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory</property>
+		<property name="cache.use_second_level_cache">true</property>
+		<property name="cache.use_structured_entries">true</property>
+		<property name="cache.region.factory_class">org.hibernate.cache.EhCacheRegionFactory</property>
+		<property name="cache.region_prefix">qibernate</property>
 		<property name="cache.default_cache_concurrency_strategy">nonstrict-read-write</property>
 		<property name="javax.persistence.sharedCache.mode">DISABLE_SELECTIVE</property>
 

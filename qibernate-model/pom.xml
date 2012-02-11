@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-jpamodelgen</artifactId>
-			<version>1.1.1.Final</version>
+			<version>1.2.0.CR1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -43,7 +43,7 @@
 			<groupId>com.mysema.querydsl</groupId>
 			<artifactId>querydsl-jpa</artifactId>
 			<classifier>apt-hibernate-one-jar</classifier>
-			<version>2.2.4</version>
+			<version>2.3.1</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

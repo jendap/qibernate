@@ -32,11 +32,12 @@
 			<property name="hibernate.c3p0.timeout" value="30" />
 
 			<!-- Enable query and second-level cache -->
-			<property name="hibernate.cache.use_second_level_cache" value="true" />
 			<property name="hibernate.cache.use_query_cache" value="true" />
+			<property name="hibernate.cache.use_second_level_cache" value="true" />
+			<property name="hibernate.cache.use_structured_entries" value="true" />
 			<property name="hibernate.cache.region.factory_class"
-					value="org.hibernate.cache.infinispan.InfinispanRegionFactory"/>
-			<property name="hibernate.cache.infinispan.cachemanager" value="java:CacheManager" />
+					value="org.hibernate.cache.EhCacheRegionFactory" />
+			<property name="hibernate.cache.region_prefix" value="qibernate" />
 			<property name="hibernate.cache.default_cache_concurrency_strategy" value="nonstrict-read-write" />
 			<property name="javax.persistence.sharedCache.mode" value="DISABLE_SELECTIVE" />
 
