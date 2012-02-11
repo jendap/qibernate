@@ -1,4 +1,4 @@
-package com.github.jendap.qibernate.spring.service;
+package com.github.jendap.qibernate.spring.service.xml;
 
 import org.springframework.transaction.annotation.Transactional;
 

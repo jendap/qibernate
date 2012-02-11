@@ -1,4 +1,4 @@
-package com.github.jendap.qibernate.spring;
+package com.github.jendap.qibernate.spring.xml;
 
 //import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

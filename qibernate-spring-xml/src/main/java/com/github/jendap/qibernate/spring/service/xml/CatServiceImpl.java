@@ -1,4 +1,4 @@
-package com.github.jendap.qibernate.spring.service;
+package com.github.jendap.qibernate.spring.service.xml;
 
 import static com.github.jendap.qibernate.model.QCat.cat;
 
@@ -7,8 +7,8 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.github.jendap.qibernate.model.Cat;
-import com.github.jendap.qibernate.spring.repository.CatRepository;
-import com.github.jendap.qibernate.spring.repository.CatSpecs;
+import com.github.jendap.qibernate.spring.repository.xml.CatRepository;
+import com.github.jendap.qibernate.spring.repository.xml.CatSpecs;
 
 
 @Service

@@ -13,7 +13,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.github.jendap</groupId>
-			<artifactId>qibernate-spring</artifactId>
+			<artifactId>qibernate-spring-xml</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

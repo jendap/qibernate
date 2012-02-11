@@ -1,4 +1,4 @@
-package com.github.jendap.qibernate.spring.repository;
+package com.github.jendap.qibernate.spring.repository.xml;
 
 import static com.github.jendap.qibernate.model.QCat.cat;
 
