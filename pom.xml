@@ -15,7 +15,6 @@
 		<module>qibernate-model</module>
 		<module>qibernate-jpa</module>
 		<module>qibernate-hibernate</module>
-		<module>qibernate-genericdao</module>
 		<module>qibernate-querydsl</module>
 		<module>qibernate-spring</module>
 		<module>qibernate-misc</module>

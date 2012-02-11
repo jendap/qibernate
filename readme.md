@@ -26,7 +26,6 @@ into showcase of much more technologies:
   - c3p0 conection pool
   - echcache cache
   - querydsl
-  - genericdao
 * spring
   - dependency injection
   - transactions
