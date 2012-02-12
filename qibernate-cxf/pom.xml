@@ -13,10 +13,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.github.jendap</groupId>
-			<artifactId>qibernate-spring-xml</artifactId>
+			<artifactId>qibernate-spring</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
+		<!-- spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -69,6 +70,12 @@
 
 		<!-- test -->
 		<dependency>
+			<groupId>com.github.jendap</groupId>
+			<artifactId>qibernate-spring</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>3.1.0.RELEASE</version>
@@ -95,7 +102,7 @@
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>8.1.0.RC5</version>
+				<version>8.1.0.v20120127</version>
 				<configuration>
 					<scanIntervalSeconds>3</scanIntervalSeconds>
 					<webAppSourceDirectory>WEB-INF</webAppSourceDirectory>

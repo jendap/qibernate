@@ -1,35 +1,54 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemalocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="WebApp_ID" version="2.5">
+	id="QibernateService" version="2.5">
 
 	<display-name>qibernate-service</display-name>
 
 
-
 	<!-- spring -->
+	<!-- Configure ContextLoaderListener to use AnnotationConfigWebApplicationContext 
+		instead of the default XmlWebApplicationContext -->
 	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring-persistance.xml WEB-INF/spring-cxf.xml</param-value>
+		<param-name>contextClass</param-name>
+		<param-value>
+			org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+		</param-value>
 	</context-param>
 
+	<!-- Configuration locations must consist of one or more comma- or space-delimited 
+		fully-qualified @Configuration classes. Fully-qualified packages may also 
+		be specified for component-scanning -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			com.github.jendap.qibernate.cxf.config.CatServiceCxfConfig
+		</param-value>
+	</context-param>
+
+	<!-- Set the active Spring profiles at runtime programmatically via application 
+		context initializer. -->
+	<context-param>
+		<param-name>contextInitializerClasses</param-name>
+		<param-value>
+			com.github.jendap.qibernate.cxf.config.ContextProfileInitializer
+		</param-value>
+	</context-param>
+
+	<!-- Bootstrap the root application context as usual using ContextLoaderListener -->
 	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
 	</listener>
-
-	<!-- or use the ContextLoaderServlet instead of the above listener -->
-<!-- 	<servlet> -->
-<!-- 		<servlet-name>context</servlet-name> -->
-<!-- 		<servlet-class>org.springframework.web.context.ContextLoaderServlet</servlet-class> -->
-<!-- 		<load-on-startup>1</load-on-startup> -->
-<!-- 	</servlet> -->
-
 
 
 	<!-- cxf -->
 	<servlet>
 		<servlet-name>CXFServlet</servlet-name>
-		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<servlet-class>
+			org.apache.cxf.transport.servlet.CXFServlet
+		</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
@@ -37,15 +56,4 @@
 		<servlet-name>CXFServlet</servlet-name>
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
-
-<!-- 	<servlet> -->
-<!-- 		<servlet-name>spring</servlet-name> -->
-<!-- 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> -->
-<!-- 		<load-on-startup>1</load-on-startup> -->
-<!-- 	</servlet> -->
-
-<!-- 	<servlet-mapping> -->
-<!-- 		<servlet-name>spring</servlet-name> -->
-<!-- 		<url-pattern>/connector/*</url-pattern> -->
-<!-- 	</servlet-mapping> -->
 </web-app>

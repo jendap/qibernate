@@ -8,9 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.jendap.qibernate.cxf.domain.Cat;
-import com.github.jendap.qibernate.spring.repository.xml.CatRepository;
-import com.github.jendap.qibernate.spring.service.xml.CatService;
-
+import com.github.jendap.qibernate.spring.repository.CatRepository;
+import com.github.jendap.qibernate.spring.service.CatService;
 
 public class CatServiceWSImpl implements CatServiceWS {
 	private static final Logger log = LoggerFactory.getLogger(CatServiceRSImpl.class);

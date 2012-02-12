@@ -23,14 +23,14 @@ into showcase of much more technologies:
   - custom serialization
   - custom validation
 * related stuff
-  - c3p0 conection pool
+  - c3p0 ant tomcat jdbc conection pools
   - echcache cache
   - querydsl
 * spring
   - dependency injection
   - transactions
   - spring data
-* web service (apache cxf)
+* web service (using apache cxf)
   - soap
   - rest
 * maven
@@ -43,5 +43,6 @@ into showcase of much more technologies:
 * tests
   - junit
   - spring-test
+* lombok
 
 And perhaps even more - there are so many that it's hard to get a complete list ;-)

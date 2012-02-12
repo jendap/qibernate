@@ -9,9 +9,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import com.github.jendap.qibernate.cxf.domain.Cat;
-
 
 @Path("/catservice/")
 @Produces({ "application/json", "application/xml" })
@@ -27,8 +27,8 @@ public interface CatServiceRS {
 
 	@POST
 	@Path("/new")
-	@Consumes({ "application/json", "application/xml" })
-	@Produces({ "application/json", "application/xml" })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public String newCat(final Cat cat) throws RuntimeException;
 
 	@GET
