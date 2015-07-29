@@ -1,43 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="300 seconds">
-	<!-- property file is in a form "key=value", may contain environment variables - i.e. "destination=${USER_HOME}/${fileName}" -->
-	<!-- property file="variables.properties" / -->
+	<!-- <property file="logback.properties" /> -->
+
+	<statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
 
 	<jmxConfigurator />
 
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
 	<contextName>Qibernate</contextName>
 
-	<timestamp key="bySecond" datePattern="yyyyMMdd'-'HHmmss" />
-
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-<!--		<file>qibernate-${HOSTNAME}-${bySecond}.log.gz</file>-->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${LOG_FILENAME_PREFIX:-qibernate}-${HOSTNAME}-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+			<fileNamePattern>${LOG_FILENAME_PREFIX:-qibernate}-${HOSTNAME}-%d{yyyyMMdd}.%i.log.gz</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy
 					class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>256MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
-<!--			<maxHistory>366</maxHistory>-->
+			<maxHistory>64</maxHistory>
+			<!-- <cleanHistoryOnStart>true</cleanHistoryOnStart> -->
 		</rollingPolicy>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<!-- pattern>%d{HH:mm:ss.SSS} %msg%n</pattern -->
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+			<charset>UTF-8</charset>
+			<!-- BEWARE: tokens like line, file, class, and method are relatively slow as they have to extract stack trace -->
+			<pattern>%date{ISO8601} [%thread] %-5level %logger{64} - %message%n%rootException</pattern>
+			<!-- <immediateFlush>false</immediateFlush> -->
+			<!-- <outputPatternAsHeader>true</outputPatternAsHeader> -->
 		</encoder>
 	</appender>
 
-	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- On Windows machines org.fusesource.jansi:jansi:1.8 on the class path -->
+		<!-- and withJansi set to true is needed for teminal coloring. -->
+		<!-- <withJansi>true</withJansi> -->
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+			<charset>UTF-8</charset>
+			<pattern>%date{HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{36}:%line) - %message%n%rootException{full,
+					java.lang.reflect.Method,
+					org.apache.catalina,
+					org.springframework.aop,
+					org.springframework.security,
+					org.springframework.transaction,
+					org.springframework.web,
+					sun.reflect,
+					net.sf.cglib,
+					ByCGLIB
+			}</pattern>
 		</encoder>
 	</appender>
+
+	<!--  <appender name="ASYNC_FILE" class="ch.qos.logback.classic.AsyncAppender"> -->
+	<!--  <appender-ref ref="FILE" /> -->
+	<!--  <queueSize>256</queueSize> -->
+	<!--  <discardingThreshold>0</discardingThreshold> -->
+	<!-- </appender> -->
 
 	<logger name="org.hibernate.SQL" level="INFO" />
 	<logger name="org.hibernate.cache" level="DEBUG" />
-<!--	<logger name="org.hibernate.*" level="INFO" />-->
+	<!-- <logger name="org.hibernate.*" level="INFO" /> -->
 
-<!--	<logger name="com.github.jendap.qibernate" additivity="false">-->
-<!--		<appender-ref ref="MRFILE" />-->
-<!--	</logger>-->
+	<!-- <logger name="com.github.jendap.qibernate" additivity="false"> -->
+	<!-- <appender-ref ref="FILE" /> -->
+	<!-- </logger> -->
 
 	<root level="${LOGBACK_ROOT_LEVEL:-INFO}">
 		<appender-ref ref="${LOGBACK_ROOT_APPENDER:-FILE}" />

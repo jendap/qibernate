@@ -3,6 +3,7 @@ package com.github.jendap.qibernate.model;
 import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.PreRemove;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -16,12 +17,11 @@ import lombok.ToString;
 
 import com.github.jendap.qibernate.validator.ValidKitten;
 
-
 @Data
-@EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true, of = { "name" })
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, of = { "name" })
 @Entity
 @Table(name = "kitten")
 @ValidKitten
@@ -34,6 +34,12 @@ public class Kitten extends VersionedLongIdEntity {
 	@NotNull
 	private String name;
 
-	@Min(0) @Max(1000000)
+	@Min(0)
+	@Max(1000000)
 	private int price;
+
+	@PreRemove
+	public void preRemove() {
+		this.setCat(null);
+	}
 }

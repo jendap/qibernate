@@ -16,12 +16,12 @@ import org.apache.cxf.feature.LoggingFeature;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
 import org.apache.cxf.jaxws.EndpointImpl;
 import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
-import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
+import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.github.jendap.qibernate.cxf.CatServiceRS;
 import com.github.jendap.qibernate.cxf.CatServiceRSImpl;
 import com.github.jendap.qibernate.cxf.CatServiceWS;

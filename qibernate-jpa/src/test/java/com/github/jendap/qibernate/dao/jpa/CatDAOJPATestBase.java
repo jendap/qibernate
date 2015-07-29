@@ -15,7 +15,6 @@ import org.junit.BeforeClass;
 
 import com.github.jendap.qibernate.dao.CatDAOTestBase;
 
-
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class CatDAOJPATestBase extends CatDAOTestBase {

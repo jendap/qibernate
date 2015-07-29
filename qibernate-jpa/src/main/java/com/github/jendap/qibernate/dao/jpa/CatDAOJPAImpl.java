@@ -10,9 +10,7 @@ import javax.persistence.criteria.Root;
 
 import com.github.jendap.qibernate.dao.CatDAO;
 import com.github.jendap.qibernate.model.Cat;
-
 import com.github.jendap.qibernate.model.Cat_;
-
 
 public class CatDAOJPAImpl implements CatDAO {
 	private final EntityManager em;

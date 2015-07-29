@@ -5,11 +5,10 @@ import java.util.Properties;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
-import lombok.val;
-
+import org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaDialect;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -19,9 +18,13 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.github.jendap.qibernate.spring.repository.CatRepository;
+
+import lombok.val;
+
 @Configuration
 @EnableTransactionManagement(order = 10)
-@ImportResource("classpath:/spring-persistance-springdata-repositories-only.xml")
+@EnableJpaRepositories(basePackageClasses = CatRepository.class)
 public class JpaConfig {
 	@Inject
 	DataSource dataSource;
@@ -65,8 +68,10 @@ public class JpaConfig {
 //		properties.setProperty("hibernate.connection.url", "jdbc:h2:memFS:/tmp/foo;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE");
 //		properties.setProperty("hibernate.connection.username", "sa");
 //		properties.setProperty("hibernate.connection.password", "");
-		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+//		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
 //		properties.setProperty("hibernate.hbm2ddl.import_files", "/import.sql");
+
+		properties.setProperty("hibernate.cache.region.factory_class", SingletonEhCacheRegionFactory.class.getName());
 		return properties;
 	}
 }

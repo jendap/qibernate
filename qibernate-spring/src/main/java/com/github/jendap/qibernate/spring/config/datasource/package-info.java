@@ -7,4 +7,3 @@
  * each one of them has a lot of configuration options. Hence the compexity.
  */
 package com.github.jendap.qibernate.spring.config.datasource;
-

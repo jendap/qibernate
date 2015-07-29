@@ -1,14 +1,15 @@
-package com.github.jendap.qibernate;
-
-import lombok.extern.slf4j.Slf4j;
+package com.github.jendap.qibernate.util;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 import com.github.jendap.qibernate.model.Cat;
 import com.github.jendap.qibernate.model.Kitten;
 import com.github.jendap.qibernate.model.Nest;
 
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class HibernateUtil {
@@ -16,15 +17,14 @@ public class HibernateUtil {
 
 	private static SessionFactory buildSessionFactory() {
 		try {
-			// Create the SessionFactory from hibernate.cfg.xml
 			final Configuration configuration = new Configuration();
+			configuration.configure("/hibernate.cfg.xml");
 //			configuration.setProperty("hibernate.show_sql", "true");
 
-			return configuration.configure()
-					.addAnnotatedClass(Cat.class)
-					.addAnnotatedClass(Kitten.class)
-					.addAnnotatedClass(Nest.class)
-					.buildSessionFactory();
+			final ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+					.applySettings(configuration.getProperties()).build();
+			return configuration.addAnnotatedClass(Cat.class).addAnnotatedClass(Kitten.class)
+					.addAnnotatedClass(Nest.class).buildSessionFactory(serviceRegistry);
 		} catch (final Throwable t) {
 			log.error("Initial SessionFactory creation failed.", t);
 			throw new ExceptionInInitializerError(t);

@@ -4,14 +4,15 @@
 
 	<contextName>Qibernate</contextName>
 
-	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<charset>UTF-8</charset>
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
 		</encoder>
 	</appender>
 
 	<!-- Log all SQL DML statements as they are executed -->
-<!-- 	<logger name="org.hibernate.SQL" level="DEBUG" /> -->
+	<logger name="org.hibernate.SQL" level="DEBUG" />
 	<!-- Log all JDBC parameters -->
 <!-- 	<logger name="org.hibernate.type" level="DEBUG" /> -->
 	<!-- Log all SQL DDL statements as they are executed -->
@@ -32,6 +33,6 @@
 <!-- 	<logger name="org.hibernate" level="DEBUG" /> -->
 
 	<root level="WARN">
-		<appender-ref ref="STDOUT" />
+		<appender-ref ref="CONSOLE" />
 	</root>
 </configuration>

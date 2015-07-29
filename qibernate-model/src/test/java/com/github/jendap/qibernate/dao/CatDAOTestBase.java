@@ -10,7 +10,6 @@ import com.github.jendap.qibernate.model.Cat;
 import com.github.jendap.qibernate.model.Kitten;
 import com.github.jendap.qibernate.model.Nest;
 
-
 @Data
 public class CatDAOTestBase {
 	private final Nest nest0;
@@ -33,12 +32,11 @@ public class CatDAOTestBase {
 		assertEquals(this.getCat0().getName(), first.getName());
 	}
 
-	public void catDaoTest(final CatDAO dao) {
+	public void testCatDao(final CatDAO dao) {
 		final List<Cat> catsByName = dao.findByName(this.getCat0().getName());
 		this.assertOlnyCat0Found(catsByName);
 		final List<Cat> catsByAge = dao.findByAge(this.getCat0().getAge(),
 				this.getCat0().getAge() + 1);
 		this.assertOlnyCat0Found(catsByAge);
 	}
-
 }

@@ -8,8 +8,8 @@ import org.hibernate.Transaction;
 import org.junit.After;
 import org.junit.Before;
 
-import com.github.jendap.qibernate.HibernateUtil;
 import com.github.jendap.qibernate.dao.CatDAOTestBase;
+import com.github.jendap.qibernate.util.HibernateUtil;
 
 
 @Data

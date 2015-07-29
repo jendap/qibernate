@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true, of = { "name" })
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, of = { "name" })
 @Entity
 @Table(name = "nest")
 @Cacheable

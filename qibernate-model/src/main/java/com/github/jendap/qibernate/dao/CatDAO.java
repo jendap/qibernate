@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.github.jendap.qibernate.model.Cat;
 
-
 public interface CatDAO {
 	public List<Cat> findByName(String name);
 

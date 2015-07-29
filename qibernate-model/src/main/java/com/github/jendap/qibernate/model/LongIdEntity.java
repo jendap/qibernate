@@ -1,5 +1,7 @@
 package com.github.jendap.qibernate.model;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +17,7 @@ public class LongIdEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, updatable = false, nullable = false)
+	@Access(AccessType.PROPERTY) // see HHH-3718
 	private Long id;
 
 	protected LongIdEntity() {

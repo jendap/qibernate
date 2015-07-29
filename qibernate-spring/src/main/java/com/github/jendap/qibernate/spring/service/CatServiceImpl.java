@@ -10,7 +10,6 @@ import com.github.jendap.qibernate.model.Cat;
 import com.github.jendap.qibernate.spring.repository.CatRepository;
 import com.github.jendap.qibernate.spring.repository.CatSpecs;
 
-
 @Service
 public class CatServiceImpl implements CatService {
 	private final CatRepository catRepository;

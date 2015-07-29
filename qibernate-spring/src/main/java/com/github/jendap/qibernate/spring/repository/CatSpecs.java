@@ -8,16 +8,13 @@ import javax.persistence.criteria.Root;
 import org.springframework.data.jpa.domain.Specification;
 
 import com.github.jendap.qibernate.model.Cat;
-
 import com.github.jendap.qibernate.model.Cat_;
-
 
 public class CatSpecs {
 	public static Specification<Cat> isStarving(final int starvingThreshold) {
 		return new Specification<Cat>() {
 			@Override
-			public Predicate toPredicate(Root<Cat> root,
-					CriteriaQuery<?> query, CriteriaBuilder cb) {
+			public Predicate toPredicate(Root<Cat> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
 				return cb.ge(root.get(Cat_.hunger), starvingThreshold);
 			}
 		};

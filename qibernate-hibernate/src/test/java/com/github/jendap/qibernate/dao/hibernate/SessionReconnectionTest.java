@@ -8,12 +8,12 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
 
-import com.github.jendap.qibernate.HibernateUtil;
 import com.github.jendap.qibernate.dao.CatDAO;
 import com.github.jendap.qibernate.dao.CatDAOTestBase;
 import com.github.jendap.qibernate.dao.hibernate.CatDAOCriteriaAPIImpl;
 import com.github.jendap.qibernate.model.Cat;
 import com.github.jendap.qibernate.model.Kitten;
+import com.github.jendap.qibernate.util.HibernateUtil;
 
 
 public class SessionReconnectionTest extends CatDAOTestBase {

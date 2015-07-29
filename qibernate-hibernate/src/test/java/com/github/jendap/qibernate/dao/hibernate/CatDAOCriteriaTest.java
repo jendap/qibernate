@@ -6,6 +6,6 @@ import org.junit.Test;
 public class CatDAOCriteriaTest extends CatDAOHibernateTestBase {
 	@Test
 	public void testCatDAOCriteriaAPI() {
-		this.catDaoTest(new CatDAOCriteriaAPIImpl(this.getSession()));
+		this.testCatDao(new CatDAOCriteriaAPIImpl(this.getSession()));
 	}
 }

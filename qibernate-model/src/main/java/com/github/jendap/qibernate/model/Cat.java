@@ -3,8 +3,6 @@ package com.github.jendap.qibernate.model;
 import java.util.Collection;
 
 import javax.persistence.Cacheable;
-import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -21,22 +19,22 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true, of = { "name" })
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, of = { "name" })
 @Entity
 @Table(name = "cat")
 @Cacheable
 public class Cat extends VersionedLongIdEntity {
-	@ElementCollection
-	@OneToMany(mappedBy = "cat", cascade = CascadeType.ALL)
+//	@ElementCollection
+	@OneToMany(mappedBy = "cat", fetch = FetchType.LAZY)
 	private Collection<Kitten> kittens;
 
 	@NotNull
 	private String name;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY)
 	private Nest nest;
 
 	@Min(0)

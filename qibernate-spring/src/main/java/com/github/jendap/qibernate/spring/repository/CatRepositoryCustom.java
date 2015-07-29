@@ -4,7 +4,8 @@ import java.util.List;
 
 import com.github.jendap.qibernate.model.Cat;
 
-
 public interface CatRepositoryCustom {
-	List<Cat> customFindByName(final String name);
+	List<Cat> customFindByNameUsingJPA(final String name);
+
+	List<Cat> customFindByNameUsingQueryDSL(final String name);
 }

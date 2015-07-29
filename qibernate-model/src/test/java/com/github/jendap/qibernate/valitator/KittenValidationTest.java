@@ -17,7 +17,6 @@ import com.github.jendap.qibernate.model.Cat;
 import com.github.jendap.qibernate.model.Kitten;
 import com.github.jendap.qibernate.model.Nest;
 
-
 public class KittenValidationTest {
 	private static ValidatorFactory validatorFactory;
 	private static Validator validator;

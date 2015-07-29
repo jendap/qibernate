@@ -14,9 +14,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.github.jendap.qibernate.model.Cat;
 
-
-public interface CatRepository extends JpaRepository<Cat, Long>,
-		QueryDslPredicateExecutor<Cat>, CatRepositoryCustom {
+public interface CatRepository extends JpaRepository<Cat, Long>, QueryDslPredicateExecutor<Cat>, CatRepositoryCustom {
 	List<Cat> findByName(final String name);
 
 	Page<Cat> findByName(final String name, final Pageable pageable);
@@ -28,12 +26,11 @@ public interface CatRepository extends JpaRepository<Cat, Long>,
 	List<Cat> findByAgeBetween(final int from, final int to);
 
 	@Query("select c from Cat c where c.name = ?1")
-	List<Cat> customFindByName(final String name);
+	List<Cat> customFindByNameUsingManualQuery(final String name);
 
 	@Modifying
 	@Query("update Cat c set c.age = c.age + :increment where c.name = :name")
-	int growOlder(@Param("increment") final int increment,
-			@Param("name") final String name);
+	int growOlder(@Param("increment") final int increment, @Param("name") final String name);
 
 	List<Cat> findAll(final Specification<Cat> specification);
 }

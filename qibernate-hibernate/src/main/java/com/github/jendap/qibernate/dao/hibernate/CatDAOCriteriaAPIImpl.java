@@ -10,7 +10,6 @@ import org.hibernate.criterion.Restrictions;
 import com.github.jendap.qibernate.dao.CatDAO;
 import com.github.jendap.qibernate.model.Cat;
 
-
 public class CatDAOCriteriaAPIImpl implements CatDAO {
 	private Session session;
 
@@ -29,8 +28,7 @@ public class CatDAOCriteriaAPIImpl implements CatDAO {
 	@Override
 	public List<Cat> findByName(final String name) {
 		final Property nameProperty = Property.forName("name");
-		final Criteria criteria = this.session.createCriteria(Cat.class).add(
-				nameProperty.eq(name));
+		final Criteria criteria = this.session.createCriteria(Cat.class).add(nameProperty.eq(name));
 		@SuppressWarnings("unchecked")
 		final List<Cat> result = criteria.list();
 		return result;
@@ -40,8 +38,7 @@ public class CatDAOCriteriaAPIImpl implements CatDAO {
 	public List<Cat> findByAge(final int from, final int to) {
 		final Property ageProperty = Property.forName("age");
 		final Criteria criteria = this.session.createCriteria(Cat.class).add(
-				Restrictions.conjunction().add(ageProperty.ge(from))
-						.add(ageProperty.lt(to)));
+				Restrictions.conjunction().add(ageProperty.ge(from)).add(ageProperty.lt(to)));
 		@SuppressWarnings("unchecked")
 		final List<Cat> result = criteria.list();
 		return result;

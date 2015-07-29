@@ -10,12 +10,9 @@ import org.hibernate.type.StringType;
 import org.hibernate.type.descriptor.java.BooleanTypeDescriptor;
 import org.hibernate.type.descriptor.sql.CharTypeDescriptor;
 
-
 /**
  * A type that maps between {@link java.sql.Types#CHAR CHAR(1)} and
  * {@link Boolean} (using '1' and '0')
- *
- * @author Kocour
  */
 public class OneZeroType extends AbstractSingleColumnStandardBasicType<Boolean>
 		implements PrimitiveType<Boolean>, DiscriminatorType<Boolean> {
@@ -49,9 +46,7 @@ public class OneZeroType extends AbstractSingleColumnStandardBasicType<Boolean>
 	}
 
 	@Override
-	public String objectToSQLString(final Boolean value, final Dialect dialect)
-			throws Exception {
-		return StringType.INSTANCE.objectToSQLString(value.booleanValue() ? "Y"
-				: "N", dialect);
+	public String objectToSQLString(final Boolean value, final Dialect dialect) throws Exception {
+		return StringType.INSTANCE.objectToSQLString(value.booleanValue() ? "Y" : "N", dialect);
 	}
 }
