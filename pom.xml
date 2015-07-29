@@ -16,7 +16,6 @@
 		<module>qibernate-jpa</module>
 		<module>qibernate-hibernate</module>
 		<module>qibernate-querydsl</module>
-		<module>qibernate-spring-xml</module>
 		<module>qibernate-cxf</module>
 		<module>qibernate-spring</module>
 	</modules>
