@@ -9,6 +9,10 @@
 	</parent>
 	<artifactId>qibernate-jpa</artifactId>
 
+	<properties>
+		<h2.version>1.4.196</h2.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.github.jendap</groupId>
@@ -39,7 +43,7 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate-validator.version}</version>
 		</dependency>
@@ -47,8 +51,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<!-- <version>1.4.181</version> -->
-			<version>1.4.187</version>
+			<version>${h2.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>c3p0</groupId>

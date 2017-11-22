@@ -1,6 +1,7 @@
 package com.github.jendap.qibernate.spring.service;
 
 import static com.github.jendap.qibernate.model.QCat.cat;
+import static com.github.jendap.qibernate.model.QKitten.kitten;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -48,30 +49,31 @@ public class MeowService {
 
 	@Transactional
 	public void foo(final Long kittenId) {
-		Kitten kitten = kittenRepository.findOne(kittenId);
-		Cat cat = kitten.getCat();
+//		Kitten aKitten = kittenRepository.findById(kittenId).get();
+		Kitten aKitten = kittenRepository.findOne(kitten.id.eq(kittenId)).get();
+		Cat aCat = aKitten.getCat();
 		
 		System.out.println(">>>> before delete");
-		for (Kitten k : cat.getKittens()) {
+		for (Kitten k : aCat.getKittens()) {
 			System.out.println(k);
 		}
-		Kitten secondKitten = (Kitten) cat.getKittens().toArray()[1];
+		Kitten secondKitten = (Kitten) aCat.getKittens().toArray()[1];
 		
-		kittenRepository.delete(kitten);
+		kittenRepository.delete(aKitten);
 		kittenRepository.flush();
 //		catRepository.flush();
 
 		System.out.println(">>>> jdu refreshnout kocku");
-		cat.getNest().setName("zmeneny pelech");
+		aCat.getNest().setName("zmeneny pelech");
 //		em.getEntityManagerFactory().getCache().evictAll();
 		em.refresh(secondKitten);
 //		em.refresh(cat);
 //		cat = catRepository.findOne(1L);
 //		cat = em.merge(cat);
 		System.out.println(">>>> after delete");
-		for (Kitten k : cat.getKittens()) {
+		for (Kitten k : aCat.getKittens()) {
 			System.out.println(k);
 		}
-		System.out.println(">>>> " + cat.getNest());
+		System.out.println(">>>> " + aCat.getNest());
 	}
 }

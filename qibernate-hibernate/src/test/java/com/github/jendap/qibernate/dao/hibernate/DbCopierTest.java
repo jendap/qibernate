@@ -4,6 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.hibernate.Session;
@@ -11,7 +15,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Projections;
 import org.hibernate.service.ServiceRegistry;
 import org.junit.Test;
 
@@ -34,8 +37,8 @@ public class DbCopierTest extends CatDAOTestBase {
 		final CatDAO sourceDao = new CatDAOCriteriaAPIImpl(sourceSession);
 		final List<Cat> catsByName = sourceDao.findByName(this.getCat0().getName());
 		assertEquals(1, catsByName.size());
-		assertEquals(2, ((Number) sourceSession.createCriteria(Cat.class).setProjection(Projections.rowCount()).uniqueResult()).intValue());
-		assertEquals(0, ((Number) targetSession.createCriteria(Cat.class).setProjection(Projections.rowCount()).uniqueResult()).intValue());
+		assertEquals(2, this.count(sourceSession));
+		assertEquals(0, this.count(targetSession));
 		final CatDAO targetDao = new CatDAOCriteriaAPIImpl(targetSession);
 		assertEquals(0, targetDao.findByName(this.getCat0().getName()).size());
 
@@ -56,8 +59,7 @@ public class DbCopierTest extends CatDAOTestBase {
 		targetSession.save(copyNest);
 		targetSession.save(copyCat);
 
-		assertEquals(1, ((Number) targetSession.createCriteria(Cat.class).setProjection(Projections.rowCount()).uniqueResult()).intValue());
-		System.out.println(">>>> " + targetSession.createCriteria(Cat.class).list());
+		assertEquals(1, this.count(targetSession));
 
 		targetTransaction.rollback();
 		targetSession.close();
@@ -83,5 +85,13 @@ public class DbCopierTest extends CatDAOTestBase {
 				.addAnnotatedClass(Kitten.class)
 				.addAnnotatedClass(Nest.class)
 				.buildSessionFactory(serviceRegistry);
+	}
+
+	private long count(final Session session) {
+		final CriteriaBuilder cb = session.getCriteriaBuilder();
+		final CriteriaQuery<Long> query = cb.createQuery(Long.class);
+		final Root<Cat> root = query.from(Cat.class);
+		final CriteriaQuery<Long> criteriaQuery = query.select(cb.count(root));
+		return session.createQuery(criteriaQuery).getSingleResult();
 	}
 }

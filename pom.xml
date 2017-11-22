@@ -12,7 +12,7 @@
 	<url>https://github.com/jendap/qibernate</url>
 
 	<prerequisites>
-		<maven>3.0</maven>
+		<maven>3.5</maven>
 	</prerequisites>
 
 	<modules>
@@ -52,15 +52,17 @@
 	</licenses>
 
 	<properties>
-		<jdk.version>1.7</jdk.version>
-
+		<jdk.version>1.8</jdk.version>
 		<character.encoding>UTF-8</character.encoding>
-		<generatedAnnotationsDirectory>${project.build.directory}/generated-sources/annotations</generatedAnnotationsDirectory>
 
-		<spring.version>4.1.7.RELEASE</spring.version>
-		<hibernate.version>4.3.10.Final</hibernate.version>
-		<hibernate-validator.version>5.2.0.Final</hibernate-validator.version>
-		<querydsl.version>3.6.5</querydsl.version>
+		<hibernate.version>5.2.12.Final</hibernate.version>
+		<hibernate-validator.version>6.0.5.Final</hibernate-validator.version>
+		<logback.version>1.2.3</logback.version>
+		<lombok.version>1.16.18</lombok.version>
+		<junit.version>4.12</junit.version>
+		<querydsl.version>4.1.4</querydsl.version>
+		<slf4j.version>1.7.25</slf4j.version>
+		<spring.version>5.0.1.RELEASE</spring.version>
 	</properties>
 
 	<dependencies>
@@ -68,25 +70,25 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.16.4</version>
+			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>18.0</version>
+			<version>23.4-jre</version>
 		</dependency>
 
 		<!-- logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.12</version>
+			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.1.3</version>
+			<version>${logback.version}</version>
 		</dependency>
 
 		<dependency>
@@ -99,7 +101,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -109,7 +111,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
+				<version>3.5.1</version>
 				<configuration>
 					<compilerVersion>${jdk.version}</compilerVersion>
 					<source>${jdk.version}</source>
@@ -122,7 +124,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.7</version>
+				<version>3.0.1</version>
 				<configuration>
 					<encoding>${character.encoding}</encoding>
 				</configuration>
@@ -130,7 +132,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>2.4</version>
+				<version>3.0.1</version>
 				<executions>
 					<execution>
 						<goals>
@@ -142,7 +144,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.6</version>
+				<version>3.0.2</version>
 				<executions>
 					<execution>
 						<goals>

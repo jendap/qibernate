@@ -13,7 +13,7 @@ import javax.persistence.criteria.Root;
 
 import com.github.jendap.qibernate.model.Cat;
 import com.github.jendap.qibernate.model.Cat_;
-import com.mysema.query.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAQuery;
 
 public class CatRepositoryImpl implements CatRepositoryCustom {
 	@PersistenceContext
@@ -32,6 +32,6 @@ public class CatRepositoryImpl implements CatRepositoryCustom {
 
 	@Override
 	public List<Cat> customFindByNameUsingQueryDSL(final String name) {
-		return new JPAQuery(this.em).from(cat).where(cat.name.eq(name)).list(cat);
+		return new JPAQuery<Cat>(this.em).from(cat).where(cat.name.eq(name)).fetch();
 	}
 }

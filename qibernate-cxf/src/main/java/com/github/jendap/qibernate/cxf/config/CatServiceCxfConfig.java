@@ -12,7 +12,7 @@ import lombok.val;
 
 import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.feature.AbstractFeature;
-import org.apache.cxf.feature.LoggingFeature;
+import org.apache.cxf.ext.logging.LoggingFeature;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
 import org.apache.cxf.jaxws.EndpointImpl;
 import org.apache.cxf.jaxws.JaxWsServerFactoryBean;

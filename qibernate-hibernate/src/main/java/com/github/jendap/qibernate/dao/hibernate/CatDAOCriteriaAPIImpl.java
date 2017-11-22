@@ -2,10 +2,11 @@ package com.github.jendap.qibernate.dao.hibernate;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
-import org.hibernate.criterion.Property;
-import org.hibernate.criterion.Restrictions;
 
 import com.github.jendap.qibernate.dao.CatDAO;
 import com.github.jendap.qibernate.model.Cat;
@@ -27,20 +28,19 @@ public class CatDAOCriteriaAPIImpl implements CatDAO {
 
 	@Override
 	public List<Cat> findByName(final String name) {
-		final Property nameProperty = Property.forName("name");
-		final Criteria criteria = this.session.createCriteria(Cat.class).add(nameProperty.eq(name));
-		@SuppressWarnings("unchecked")
-		final List<Cat> result = criteria.list();
-		return result;
+		final CriteriaBuilder cb = this.session.getCriteriaBuilder();
+		final CriteriaQuery<Cat> query = cb.createQuery(Cat.class);
+		final Root<Cat> root = query.from(Cat.class);
+		final CriteriaQuery<Cat> criteriaQuery = query.where(cb.equal(root.get("name"), name));
+		return this.session.createQuery(criteriaQuery).getResultList();
 	}
 
 	@Override
 	public List<Cat> findByAge(final int from, final int to) {
-		final Property ageProperty = Property.forName("age");
-		final Criteria criteria = this.session.createCriteria(Cat.class).add(
-				Restrictions.conjunction().add(ageProperty.ge(from)).add(ageProperty.lt(to)));
-		@SuppressWarnings("unchecked")
-		final List<Cat> result = criteria.list();
-		return result;
+		final CriteriaBuilder cb = this.session.getCriteriaBuilder();
+		final CriteriaQuery<Cat> query = cb.createQuery(Cat.class);
+		final Root<Cat> root = query.from(Cat.class);
+		final CriteriaQuery<Cat> criteriaQuery = query.where(cb.and(cb.ge(root.get("age"), from), cb.lt(root.get("age"), to)));
+		return this.session.createQuery(criteriaQuery).getResultList();
 	}
 }

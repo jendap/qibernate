@@ -13,6 +13,8 @@ import com.github.jendap.qibernate.model.Cat_;
 public class CatSpecs {
 	public static Specification<Cat> isStarving(final int starvingThreshold) {
 		return new Specification<Cat>() {
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public Predicate toPredicate(Root<Cat> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
 				return cb.ge(root.get(Cat_.hunger), starvingThreshold);
