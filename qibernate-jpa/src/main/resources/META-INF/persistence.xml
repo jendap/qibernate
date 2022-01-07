@@ -13,7 +13,7 @@
         <properties>
             <!-- Connection properties -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:memFS:/tmp/foo;MVCC=TRUE"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:foo"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
 

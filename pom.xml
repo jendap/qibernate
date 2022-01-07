@@ -52,17 +52,21 @@
     </licenses>
 
     <properties>
-        <jdk.version>1.8</jdk.version>
+        <main.class>UNSPECIFIED</main.class>
+
+        <jdk.version>11</jdk.version>
         <character.encoding>UTF-8</character.encoding>
 
-        <hibernate.version>5.2.12.Final</hibernate.version>
-        <hibernate-validator.version>6.0.5.Final</hibernate-validator.version>
-        <logback.version>1.2.3</logback.version>
-        <lombok.version>1.16.18</lombok.version>
-        <junit.version>4.12</junit.version>
-        <querydsl.version>4.1.4</querydsl.version>
-        <slf4j.version>1.7.25</slf4j.version>
-        <spring.version>5.0.1.RELEASE</spring.version>
+        <guava.version>31.0.1-jre</guava.version>
+        <hibernate.version>5.6.3.Final</hibernate.version>
+        <!--<hibernate-validator.version>7.0.1.Final</hibernate-validator.version>-->
+        <hibernate-validator.version>6.0.18.Final</hibernate-validator.version>
+        <logback.version>1.2.10</logback.version>
+        <lombok.version>1.18.22</lombok.version>
+        <junit.version>4.13.2</junit.version>
+        <querydsl.version>5.0.0</querydsl.version>
+        <slf4j.version>1.7.32</slf4j.version>
+        <spring.version>5.3.14</spring.version>
     </properties>
 
     <dependencies>
@@ -76,7 +80,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>23.4-jre</version>
+            <version>${guava.version}</version>
         </dependency>
 
         <!-- logging -->
@@ -111,7 +115,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.8.1</version>
                 <configuration>
                     <compilerVersion>${jdk.version}</compilerVersion>
                     <source>${jdk.version}</source>
@@ -124,54 +128,37 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>3.2.0</version>
                 <configuration>
                     <encoding>${character.encoding}</encoding>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>${main.class}</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>${main.class}</argument>
+                    </arguments>
+                </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>jboss-groups-public</id>
-            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-        </repository>
-
-        <repository>
-            <id>springframework-snapshot</id>
-            <url>http://maven.springframework.org/snapshot</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>jboss-groups-public</id>
-            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-        </pluginRepository>
-    </pluginRepositories>
 </project>

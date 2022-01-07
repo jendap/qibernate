@@ -2,7 +2,6 @@ package com.github.jendap.qibernate.spring.config;
 
 import com.github.jendap.qibernate.spring.repository.CatRepository;
 import lombok.val;
-import org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -62,13 +61,13 @@ public class JpaConfig {
         val properties = new Properties();
 //		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 //		properties.setProperty("hibernate.connection.driver_class", "org.h2.Driver");
-//		properties.setProperty("hibernate.connection.url", "jdbc:h2:memFS:/tmp/foo;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE");
+//		properties.setProperty("hibernate.connection.url", "jdbc:h2:memFS:/tmp/foo;DB_CLOSE_ON_EXIT=FALSE");
 //		properties.setProperty("hibernate.connection.username", "sa");
 //		properties.setProperty("hibernate.connection.password", "");
 //		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
 //		properties.setProperty("hibernate.hbm2ddl.import_files", "/import.sql");
 
-        properties.setProperty("hibernate.cache.region.factory_class", SingletonEhCacheRegionFactory.class.getName());
+        properties.setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
         return properties;
     }
 }

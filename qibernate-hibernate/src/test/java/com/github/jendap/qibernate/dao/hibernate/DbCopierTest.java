@@ -67,7 +67,7 @@ public class DbCopierTest extends CatDAOTestBase {
 
     private SessionFactory buildTargetSessionFactory() {
         final Configuration configuration = new Configuration();
-        configuration.setProperty("hibernate.connection.url", "jdbc:h2:memFS:bar;MVCC=TRUE");
+        configuration.setProperty("hibernate.connection.url", "jdbc:h2:mem:bar");
         configuration.setProperty("hibernate.connection.driver_class", "org.h2.Driver");
         configuration.setProperty("hibernate.connection.username", "sa");
         configuration.setProperty("hibernate.connection.password", "");

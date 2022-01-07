@@ -30,7 +30,7 @@ public class CatDAOHQLImpl implements CatDAO {
 
     @Override
     public List<Cat> findByAge(final int from, final int to) {
-        @SuppressWarnings("unchecked") final List<Cat> result = this.session.createQuery("from Cat where age >= ? and age < ?").setParameter(0, from)
+        @SuppressWarnings("unchecked") final List<Cat> result = this.session.createQuery("from Cat where age >= ?0 and age < ?1").setParameter(0, from)
                 .setParameter(1, to).list();
         return result;
     }

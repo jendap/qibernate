@@ -5,7 +5,6 @@
         <artifactId>qibernate</artifactId>
         <groupId>com.github.jendap</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>..</relativePath>
     </parent>
     <artifactId>qibernate-hibernate</artifactId>
 
@@ -48,16 +47,15 @@
             <version>${hibernate-validator.version}</version>
         </dependency>
 
-        <!-- <dependency> -->
-        <!-- <groupId>org.hsqldb</groupId> -->
-        <!-- <artifactId>hsqldb</artifactId> -->
-        <!-- <version>2.3.3</version> -->
-        <!-- </dependency> -->
+        <!--<dependency>-->
+        <!--    <groupId>org.hsqldb</groupId>-->
+        <!--    <artifactId>hsqldb</artifactId>-->
+        <!--    <version>2.6.1</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <!-- <version>1.4.181</version> -->
-            <version>1.4.196</version>
+            <version>2.0.206</version>
         </dependency>
         <dependency>
             <groupId>c3p0</groupId>
@@ -66,8 +64,8 @@
         </dependency>
         <dependency>
             <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache-core</artifactId>
-            <version>2.6.11</version>
+            <artifactId>ehcache</artifactId>
+            <version>2.10.9.2</version>
         </dependency>
 
         <dependency>
@@ -76,35 +74,4 @@
             <version>5.5.1</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>${main.class}</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.5.0</version>
-                <configuration>
-                    <executable>java</executable>
-                    <arguments>
-                        <argument>-classpath</argument>
-                        <classpath/>
-                        <argument>${main.class}</argument>
-                    </arguments>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

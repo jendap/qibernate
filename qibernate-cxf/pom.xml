@@ -5,15 +5,14 @@
         <artifactId>qibernate</artifactId>
         <groupId>com.github.jendap</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>..</relativePath>
     </parent>
     <artifactId>qibernate-cxf</artifactId>
     <packaging>war</packaging>
 
     <properties>
         <async-http-client.version>1.9.40</async-http-client.version>
-        <cxf.version>3.2.1</cxf.version>
-        <jackson.version>2.9.2</jackson.version>
+        <cxf.version>3.5.0</cxf.version>
+        <jackson.version>2.13.1</jackson.version>
     </properties>
 
     <dependencies>
@@ -86,7 +85,7 @@
         <dependency>
             <groupId>com.ning</groupId>
             <artifactId>async-http-client</artifactId>
-            <version>1.9.40</version>
+            <version>${async-http-client.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -110,7 +109,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.7.v20170914</version>
+                <version>11.0.7</version>
                 <configuration>
                     <scanIntervalSeconds>3</scanIntervalSeconds>
                     <webAppSourceDirectory>WEB-INF</webAppSourceDirectory>
@@ -140,7 +139,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>3.0.0-M5</version>
                 <configuration>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
