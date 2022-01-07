@@ -1,23 +1,21 @@
 package com.github.jendap.qibernate.spring;
 
-import javax.inject.Inject;
-
-import lombok.extern.slf4j.Slf4j;
-
-import org.junit.Test;
-
 import com.github.jendap.qibernate.spring.repository.CatRepository;
 import com.github.jendap.qibernate.spring.repository.KittenRepository;
 import com.github.jendap.qibernate.spring.service.MeowService;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+
+import javax.inject.Inject;
 
 @Slf4j
 public class MeowTest extends SpringTestBase {
-	@Inject
-	MeowService meowService;
-	@Inject
-	CatRepository catRepository;
-	@Inject
-	KittenRepository kittenRepository;
+    @Inject
+    MeowService meowService;
+    @Inject
+    CatRepository catRepository;
+    @Inject
+    KittenRepository kittenRepository;
 
 //	@Test
 //	public void testCatRepository() {
@@ -29,12 +27,12 @@ public class MeowTest extends SpringTestBase {
 //		assertThat(firstCat.getName(), equalTo("cat0.name"));
 //	}
 
-	@Test
-	public void testFoo() {
-		try {
-			meowService.foo(1L);
-		} catch (final Throwable t) {
-			log.error(">>>> Exception", t);
-		}
-	}
+    @Test
+    public void testFoo() {
+        try {
+            meowService.foo(1L);
+        } catch (final Throwable t) {
+            log.error(">>>> Exception", t);
+        }
+    }
 }

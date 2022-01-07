@@ -6,7 +6,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SpringTestBaseConfig.class })
+@ContextConfiguration(classes = {SpringTestBaseConfig.class})
 // TODO: We should use ContextHierarchy here to cache most of the beans but then we could
 //       inject DataSource into JpaConfig hence we would have to create...
 //		class ??? implements ApplicationListener<ContextRefreshedEvent> {
@@ -20,6 +20,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //    @ContextConfiguration(classes = { CatServiceConfig.class }),
 //    @ContextConfiguration(classes = { BoneCPConfig.class, C3p0DataSourceConfig.class, EmbeddedDataSourceConfig.class, JndiDataSourceConfig.class, SpringDataSourceConfig.class, TomcatDataSourceConfig.class })
 //})
-@ActiveProfiles({ "dev" })
+@ActiveProfiles({"dev"})
 public abstract class SpringTestBase {
 }

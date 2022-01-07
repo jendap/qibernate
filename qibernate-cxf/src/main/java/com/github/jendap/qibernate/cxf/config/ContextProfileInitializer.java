@@ -15,10 +15,10 @@ import org.springframework.web.context.ConfigurableWebApplicationContext;
  * </ul>
  */
 public class ContextProfileInitializer implements
-		ApplicationContextInitializer<ConfigurableWebApplicationContext> {
-	public void initialize(final ConfigurableWebApplicationContext ctx) {
-		final ConfigurableEnvironment environment = ctx.getEnvironment();
-		final String profiles = "dev"; // TODO: add some logic for profile selection
-		environment.setActiveProfiles(profiles);
-	}
+        ApplicationContextInitializer<ConfigurableWebApplicationContext> {
+    public void initialize(final ConfigurableWebApplicationContext ctx) {
+        final ConfigurableEnvironment environment = ctx.getEnvironment();
+        final String profiles = "dev"; // TODO: add some logic for profile selection
+        environment.setActiveProfiles(profiles);
+    }
 }

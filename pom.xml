@@ -1,177 +1,177 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.jendap</groupId>
-	<artifactId>qibernate</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <groupId>com.github.jendap</groupId>
+    <artifactId>qibernate</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-	<name>qibernate</name>
-	<description>Qocka for President!</description>
-	<url>https://github.com/jendap/qibernate</url>
+    <name>qibernate</name>
+    <description>Qocka for President!</description>
+    <url>https://github.com/jendap/qibernate</url>
 
-	<prerequisites>
-		<maven>3.5</maven>
-	</prerequisites>
+    <prerequisites>
+        <maven>3.5</maven>
+    </prerequisites>
 
-	<modules>
-		<module>qibernate-model</module>
-		<module>qibernate-jpa</module>
-		<module>qibernate-hibernate</module>
-		<module>qibernate-querydsl</module>
-		<module>qibernate-cxf</module>
-		<module>qibernate-spring</module>
-	</modules>
+    <modules>
+        <module>qibernate-model</module>
+        <module>qibernate-jpa</module>
+        <module>qibernate-hibernate</module>
+        <module>qibernate-querydsl</module>
+        <module>qibernate-cxf</module>
+        <module>qibernate-spring</module>
+    </modules>
 
-	<scm>
-		<url>https://github.com/jendap/qibernate.git</url>
-		<connection>scm:git:git@github.com:jendap/qibernate.git</connection>
-		<developerConnection>scm:git:git@github.com:jendap/qibernate.git</developerConnection>
-	</scm>
+    <scm>
+        <url>https://github.com/jendap/qibernate.git</url>
+        <connection>scm:git:git@github.com:jendap/qibernate.git</connection>
+        <developerConnection>scm:git:git@github.com:jendap/qibernate.git</developerConnection>
+    </scm>
 
-	<issueManagement>
-		<system>GitHub</system>
-		<url>https://github.com/jendap/qibernate/issues/</url>
-	</issueManagement>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/jendap/qibernate/issues/</url>
+    </issueManagement>
 
-	<developers>
-		<developer>
-			<id>jan.prach</id>
-			<name>Jan Prach</name>
-			<timezone>+1</timezone>
-		</developer>
-	</developers>
+    <developers>
+        <developer>
+            <id>jan.prach</id>
+            <name>Jan Prach</name>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
 
-	<licenses>
-		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-	<properties>
-		<jdk.version>1.8</jdk.version>
-		<character.encoding>UTF-8</character.encoding>
+    <properties>
+        <jdk.version>1.8</jdk.version>
+        <character.encoding>UTF-8</character.encoding>
 
-		<hibernate.version>5.2.12.Final</hibernate.version>
-		<hibernate-validator.version>6.0.5.Final</hibernate-validator.version>
-		<logback.version>1.2.3</logback.version>
-		<lombok.version>1.16.18</lombok.version>
-		<junit.version>4.12</junit.version>
-		<querydsl.version>4.1.4</querydsl.version>
-		<slf4j.version>1.7.25</slf4j.version>
-		<spring.version>5.0.1.RELEASE</spring.version>
-	</properties>
+        <hibernate.version>5.2.12.Final</hibernate.version>
+        <hibernate-validator.version>6.0.5.Final</hibernate-validator.version>
+        <logback.version>1.2.3</logback.version>
+        <lombok.version>1.16.18</lombok.version>
+        <junit.version>4.12</junit.version>
+        <querydsl.version>4.1.4</querydsl.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <spring.version>5.0.1.RELEASE</spring.version>
+    </properties>
 
-	<dependencies>
-		<!-- generic java -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>${lombok.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>23.4-jre</version>
-		</dependency>
+    <dependencies>
+        <!-- generic java -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>23.4-jre</version>
+        </dependency>
 
-		<!-- logging -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
+        <!-- logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>1</version>
-		</dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
 
-		<!-- test -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+        <!-- test -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
-				<configuration>
-					<compilerVersion>${jdk.version}</compilerVersion>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-					<encoding>${character.encoding}</encoding>
-					<showDeprecation>true</showDeprecation>
-					<showWarnings>true</showWarnings>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.0.1</version>
-				<configuration>
-					<encoding>${character.encoding}</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.1</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>test-jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <compilerVersion>${jdk.version}</compilerVersion>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>${character.encoding}</encoding>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <encoding>${character.encoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
-	<repositories>
-		<repository>
-			<id>jboss-groups-public</id>
-			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
-		</repository>
+    <repositories>
+        <repository>
+            <id>jboss-groups-public</id>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
 
-		<repository>
-			<id>springframework-snapshot</id>
-			<url>http://maven.springframework.org/snapshot</url>
-		</repository>
-	</repositories>
+        <repository>
+            <id>springframework-snapshot</id>
+            <url>http://maven.springframework.org/snapshot</url>
+        </repository>
+    </repositories>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>jboss-groups-public</id>
-			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
-		</pluginRepository>
-	</pluginRepositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jboss-groups-public</id>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>

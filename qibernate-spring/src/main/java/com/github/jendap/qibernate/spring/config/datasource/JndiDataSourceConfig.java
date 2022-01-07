@@ -1,14 +1,13 @@
 package com.github.jendap.qibernate.spring.config.datasource;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
 import lombok.val;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 /**
  * JNDI in specification for service discovery. It is being used in production environments.
@@ -20,13 +19,13 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 @Profile("jndi-datasource")
 public class JndiDataSourceConfig implements DataSourceConfig {
-	@Bean
-	public DataSource dataSource() {
-		try {
-			val context = new InitialContext();
-			return (DataSource) context.lookup("jdbc/FooDb");
-		} catch (final NamingException e) {
-			throw new RuntimeException(e);
-		}
-	}
+    @Bean
+    public DataSource dataSource() {
+        try {
+            val context = new InitialContext();
+            return (DataSource) context.lookup("jdbc/FooDb");
+        } catch (final NamingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

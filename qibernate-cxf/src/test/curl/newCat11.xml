@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-	<soap:Header>
-	</soap:Header>
-	<soap:Body>
-		<m:newCat xmlns:m="http://webservice.spring.qibernate.jendap.github.com/">
-			<cat>
-				<age>666</age>
-				<name>qocka</name>
-			</cat>
-		</m:newCat>
-	</soap:Body>
+    <soap:Header>
+    </soap:Header>
+    <soap:Body>
+        <m:newCat xmlns:m="http://webservice.spring.qibernate.jendap.github.com/">
+            <cat>
+                <age>666</age>
+                <name>qocka</name>
+            </cat>
+        </m:newCat>
+    </soap:Body>
 </soap:Envelope>

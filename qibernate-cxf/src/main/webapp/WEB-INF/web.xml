@@ -1,60 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	xsi:schemalocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="QibernateService" version="2.5">
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemalocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="QibernateService" version="2.5">
 
-	<display-name>QibernateService</display-name>
-
-
-	<!-- spring -->
-	<!-- Configure ContextLoaderListener to use AnnotationConfigWebApplicationContext 
-		instead of the default XmlWebApplicationContext -->
-	<context-param>
-		<param-name>contextClass</param-name>
-		<param-value>
-			org.springframework.web.context.support.AnnotationConfigWebApplicationContext
-		</param-value>
-	</context-param>
-
-	<!-- Configuration locations must consist of one or more comma- or space-delimited 
-		fully-qualified @Configuration classes. Fully-qualified packages may also 
-		be specified for component-scanning -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			com.github.jendap.qibernate.cxf.config.CatServiceCxfConfig
-		</param-value>
-	</context-param>
-
-	<!-- Set the active Spring profiles at runtime programmatically via application 
-		context initializer. -->
-	<context-param>
-		<param-name>contextInitializerClasses</param-name>
-		<param-value>
-			com.github.jendap.qibernate.cxf.config.ContextProfileInitializer
-		</param-value>
-	</context-param>
-
-	<!-- Bootstrap the root application context as usual using ContextLoaderListener -->
-	<listener>
-		<listener-class>
-			org.springframework.web.context.ContextLoaderListener
-		</listener-class>
-	</listener>
+    <display-name>QibernateService</display-name>
 
 
-	<!-- cxf -->
-	<servlet>
-		<servlet-name>CXFServlet</servlet-name>
-		<servlet-class>
-			org.apache.cxf.transport.servlet.CXFServlet
-		</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <!-- spring -->
+    <!-- Configure ContextLoaderListener to use AnnotationConfigWebApplicationContext
+        instead of the default XmlWebApplicationContext -->
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>
+            org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+        </param-value>
+    </context-param>
 
-	<servlet-mapping>
-		<servlet-name>CXFServlet</servlet-name>
-		<url-pattern>/services/*</url-pattern>
-	</servlet-mapping>
+    <!-- Configuration locations must consist of one or more comma- or space-delimited
+        fully-qualified @Configuration classes. Fully-qualified packages may also
+        be specified for component-scanning -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            com.github.jendap.qibernate.cxf.config.CatServiceCxfConfig
+        </param-value>
+    </context-param>
+
+    <!-- Set the active Spring profiles at runtime programmatically via application
+        context initializer. -->
+    <context-param>
+        <param-name>contextInitializerClasses</param-name>
+        <param-value>
+            com.github.jendap.qibernate.cxf.config.ContextProfileInitializer
+        </param-value>
+    </context-param>
+
+    <!-- Bootstrap the root application context as usual using ContextLoaderListener -->
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+
+    <!-- cxf -->
+    <servlet>
+        <servlet-name>CXFServlet</servlet-name>
+        <servlet-class>
+            org.apache.cxf.transport.servlet.CXFServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CXFServlet</servlet-name>
+        <url-pattern>/services/*</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -1,46 +1,45 @@
 package com.github.jendap.qibernate.dao.jpa;
 
-import java.util.List;
+import com.github.jendap.qibernate.dao.CatDAO;
+import com.github.jendap.qibernate.model.Cat;
+import com.github.jendap.qibernate.model.Cat_;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
-import com.github.jendap.qibernate.dao.CatDAO;
-import com.github.jendap.qibernate.model.Cat;
-import com.github.jendap.qibernate.model.Cat_;
+import java.util.List;
 
 public class CatDAOJPAImpl implements CatDAO {
-	private final EntityManager em;
-	private final CriteriaBuilder cb;
+    private final EntityManager em;
+    private final CriteriaBuilder cb;
 
-	public CatDAOJPAImpl(final EntityManager entityManager) {
-		this.em = entityManager;
-		this.cb = this.em.getCriteriaBuilder();
-	}
+    public CatDAOJPAImpl(final EntityManager entityManager) {
+        this.em = entityManager;
+        this.cb = this.em.getCriteriaBuilder();
+    }
 
-	@Override
-	public List<Cat> findByName(final String name) {
-		final CriteriaQuery<Cat> criteriaQuery = this.cb.createQuery(Cat.class);
-		final Root<Cat> from = criteriaQuery.from(Cat.class);
-		final CriteriaQuery<Cat> select = criteriaQuery.select(from);
-		select.where(this.cb.equal(from.get(Cat_.name), name));
-		final TypedQuery<Cat> typedQuery = this.em.createQuery(select);
+    @Override
+    public List<Cat> findByName(final String name) {
+        final CriteriaQuery<Cat> criteriaQuery = this.cb.createQuery(Cat.class);
+        final Root<Cat> from = criteriaQuery.from(Cat.class);
+        final CriteriaQuery<Cat> select = criteriaQuery.select(from);
+        select.where(this.cb.equal(from.get(Cat_.name), name));
+        final TypedQuery<Cat> typedQuery = this.em.createQuery(select);
 //		final Query typedQuery = this.ENTITY_MANAGER.createQuery("from Cat c");
-		final List<Cat> resultList = typedQuery.getResultList();
-		return resultList;
-	}
+        final List<Cat> resultList = typedQuery.getResultList();
+        return resultList;
+    }
 
-	@Override
-	public List<Cat> findByAge(final int from, final int to) {
-		final CriteriaQuery<Cat> cq = this.cb.createQuery(Cat.class);
-		final Root<Cat> c = cq.from(Cat.class);
-		cq.where(this.cb.and(this.cb.ge(c.get(Cat_.age), from), this.cb.lt(c.get(Cat_.age), to)));
-		final TypedQuery<Cat> q = this.em.createQuery(cq);
-		return q.getResultList();
-	}
+    @Override
+    public List<Cat> findByAge(final int from, final int to) {
+        final CriteriaQuery<Cat> cq = this.cb.createQuery(Cat.class);
+        final Root<Cat> c = cq.from(Cat.class);
+        cq.where(this.cb.and(this.cb.ge(c.get(Cat_.age), from), this.cb.lt(c.get(Cat_.age), to)));
+        final TypedQuery<Cat> q = this.em.createQuery(cq);
+        return q.getResultList();
+    }
 
 //		first result from google:
 //		http://www.ibm.com/developerworks/java/library/j-typesafejpa/

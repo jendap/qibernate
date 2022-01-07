@@ -1,9 +1,9 @@
 package com.github.jendap.qibernate.validator;
 
+import com.github.jendap.qibernate.model.Kitten;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
-import com.github.jendap.qibernate.model.Kitten;
 
 public class ValidKittenValidator implements ConstraintValidator<ValidKitten, Kitten> {
 //	public static class Severity {
@@ -14,33 +14,33 @@ public class ValidKittenValidator implements ConstraintValidator<ValidKitten, Ki
 //		};
 //	}
 
-	private static String DEFAULT_HOMELESS_KITTEN_MESSAGE_TEMPLATE = "{ValidKitten.HomelessKitten}";
+    private static String DEFAULT_HOMELESS_KITTEN_MESSAGE_TEMPLATE = "{ValidKitten.HomelessKitten}";
 
-	private String message;
+    private String message;
 
-	@Override
-	public void initialize(final ValidKitten constraintAnnotation) {
-		this.message = constraintAnnotation.message();
-	}
+    @Override
+    public void initialize(final ValidKitten constraintAnnotation) {
+        this.message = constraintAnnotation.message();
+    }
 
-	@Override
-	public boolean isValid(final Kitten value, final ConstraintValidatorContext context) {
-		if (value == null) {
-			return true;
-		}
+    @Override
+    public boolean isValid(final Kitten value, final ConstraintValidatorContext context) {
+        if (value == null) {
+            return true;
+        }
 
-		if (value.getCat().getNest() == null) {
-			context.disableDefaultConstraintViolation();
-			final String messageTemplate;
-			if (this.message != null) {
-				messageTemplate = message;
-			} else {
-				messageTemplate = DEFAULT_HOMELESS_KITTEN_MESSAGE_TEMPLATE;
-			}
-			context.buildConstraintViolationWithTemplate(messageTemplate).addConstraintViolation();
-			return false;
-		} else {
-			return true;
-		}
-	}
+        if (value.getCat().getNest() == null) {
+            context.disableDefaultConstraintViolation();
+            final String messageTemplate;
+            if (this.message != null) {
+                messageTemplate = message;
+            } else {
+                messageTemplate = DEFAULT_HOMELESS_KITTEN_MESSAGE_TEMPLATE;
+            }
+            context.buildConstraintViolationWithTemplate(messageTemplate).addConstraintViolation();
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
