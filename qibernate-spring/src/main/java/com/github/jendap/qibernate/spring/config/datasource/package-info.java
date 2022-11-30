@@ -1,9 +1,10 @@
 /**
- * We need to configure {@link DataSource} in our spring {@link ApplicationContext}.
- * The {@link DataSource} is represent connection to the database. There are multiple
- * different complex configurations in this package. The complexity come from the fact
- * that {@link DataSource} is constructed from jdbc driver, connection pool, cache and
- * their respective configurations. There are different pools, caches, databases and
- * each one of them has a lot of configuration options. Hence the compexity.
+ * We need to configure {@link javax.sql.DataSource} in our spring
+ * {@link org.springframework.context.ApplicationContext}.
+ * The {@link javax.sql.DataSource} is the connection to the database.
+ * It may be created from raw jdbc driver or wrapped a connection pool.
+ * There may be a cache, logging and other goodies. All that have multiple
+ * implementations and all of them have lots of configurations. Hence,
+ * there are a few examples here.
  */
 package com.github.jendap.qibernate.spring.config.datasource;

@@ -4,6 +4,8 @@ import com.github.jendap.qibernate.spring.config.PropertiesConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Import;
 
+import javax.sql.DataSource;
+
 /**
  * Properties from *.properties files are stored in java fields here. Other {@link DataSource}
  * implementations inherit from this class.

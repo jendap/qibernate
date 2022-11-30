@@ -25,8 +25,7 @@ public class CatRepositoryImpl implements CatRepositoryCustom {
         final Root<Cat> cat = query.from(Cat.class);
         query.where(cb.equal(cat.get(Cat_.name), name));
         final TypedQuery<Cat> typedQuery = this.em.createQuery(query);
-        final List<Cat> resultList = typedQuery.getResultList();
-        return resultList;
+        return typedQuery.getResultList();
     }
 
     @Override

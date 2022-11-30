@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="300 seconds">
-    <jmxConfigurator/>
-
     <contextName>Qibernate</contextName>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -29,7 +27,7 @@
     <!--<logger name="org.hibernate.hql.ast.AST" level="DEBUG"/>-->
     <!-- Log all JAAS authorization requests -->
     <!--<logger name="org.hibernate.secure" level="DEBUG"/>-->
-    <!-- Log everything. This is a lot of information but it is useful for troubleshooting -->
+    <!-- Log everything. This is a lot of information, but it is useful for troubleshooting -->
     <!--<logger name="org.hibernate" level="DEBUG"/>-->
 
     <root level="WARN">

@@ -28,8 +28,7 @@ public class CatDAOJPAImpl implements CatDAO {
         select.where(this.cb.equal(from.get(Cat_.name), name));
         final TypedQuery<Cat> typedQuery = this.em.createQuery(select);
 //		final Query typedQuery = this.ENTITY_MANAGER.createQuery("from Cat c");
-        final List<Cat> resultList = typedQuery.getResultList();
-        return resultList;
+        return typedQuery.getResultList();
     }
 
     @Override

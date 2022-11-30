@@ -30,7 +30,7 @@ public class Cat {
     }
 
     public static List<Cat> fromModelCats(final List<com.github.jendap.qibernate.model.Cat> cats) {
-        final List<Cat> result = new ArrayList<Cat>();
+        final List<Cat> result = new ArrayList<>();
         for (final com.github.jendap.qibernate.model.Cat cat : cats) {
             result.add(fromModelCat(cat));
         }

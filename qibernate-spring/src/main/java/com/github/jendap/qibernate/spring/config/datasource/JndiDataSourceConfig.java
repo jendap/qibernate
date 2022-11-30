@@ -13,7 +13,7 @@ import javax.sql.DataSource;
  * JNDI in specification for service discovery. It is being used in production environments.
  * This way we can tell admins/devops that we will ask for {@link DataSource} of a given name.
  * Our java (web) application does not have to know what the db is. No need to know jdbc driver
- * class name, user name or password. The entire construction of {@link DataSource} object
+ * class name, username or password. The entire construction of {@link DataSource} object
  * with all of its configuration is in hands of admins/devops team.
  */
 @Configuration

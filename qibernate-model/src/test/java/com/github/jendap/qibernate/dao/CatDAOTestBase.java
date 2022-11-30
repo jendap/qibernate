@@ -25,7 +25,7 @@ public class CatDAOTestBase {
         this.kitten1 = new Kitten(this.cat0, "kitten1.name", 1);
     }
 
-    public void assertOlnyCat0Found(final List<Cat> cats) {
+    public void assertOnlyCat0Found(final List<Cat> cats) {
         assertEquals(1, cats.size());
         final Cat first = cats.get(0);
         assertEquals(this.getCat0().getName(), first.getName());
@@ -33,9 +33,8 @@ public class CatDAOTestBase {
 
     public void testCatDao(final CatDAO dao) {
         final List<Cat> catsByName = dao.findByName(this.getCat0().getName());
-        this.assertOlnyCat0Found(catsByName);
-        final List<Cat> catsByAge = dao.findByAge(this.getCat0().getAge(),
-                this.getCat0().getAge() + 1);
-        this.assertOlnyCat0Found(catsByAge);
+        this.assertOnlyCat0Found(catsByName);
+        final List<Cat> catsByAge = dao.findByAge(this.getCat0().getAge(), this.getCat0().getAge() + 1);
+        this.assertOnlyCat0Found(catsByAge);
     }
 }

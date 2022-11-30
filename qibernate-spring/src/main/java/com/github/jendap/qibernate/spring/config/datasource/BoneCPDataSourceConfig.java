@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 @Profile("bonecp-datasource")
 public class BoneCPDataSourceConfig extends GenericDataSourceConfig implements DataSourceConfig {
     @Bean
-    public DataSource dataSource() throws Exception {
+    public DataSource dataSource() {
         val dataSource = new BoneCPDataSource();
 
         dataSource.setDriverClass(this.databaseDriverClass);

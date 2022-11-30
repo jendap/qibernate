@@ -9,7 +9,6 @@ import org.junit.Test;
 import java.util.Iterator;
 
 import static com.github.jendap.qibernate.model.QCat.cat;
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
 public class CatServiceSpringTest extends SpringTestBase {
@@ -22,7 +21,7 @@ public class CatServiceSpringTest extends SpringTestBase {
 
     @Test
     public void testCatRepository() {
-        assertThat(findCat0().getName(), equalTo(CAT0_NAME_PREFIX + ".name"));
+        assertEquals(CAT0_NAME_PREFIX + ".name", findCat0().getName());
     }
 
     @Test
@@ -31,9 +30,9 @@ public class CatServiceSpringTest extends SpringTestBase {
         final int feedBy = 10;
         final int originalHunger = findCat0().getHunger();
         catService.playCatsByName(findCat0().getName(), playBy);
-        assertThat(findCat0().getHunger(), equalTo(originalHunger + playBy));
+        assertEquals(originalHunger + playBy, findCat0().getHunger());
         catService.feedAllStarvingCats(playBy, feedBy);
-        assertThat(findCat0().getHunger(), equalTo(originalHunger + playBy - feedBy));
+        assertEquals(originalHunger + playBy - feedBy, findCat0().getHunger());
     }
 
     private Cat findCat0() {

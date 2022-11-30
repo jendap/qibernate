@@ -35,8 +35,7 @@ public class SessionReconnectionTest extends CatDAOTestBase {
         final Session session = HibernateUtil.getSessionFactory().openSession();
         final Transaction transaction = session.beginTransaction();
 
-        session.update(cat);
-        final Kitten kitten = cat.getKittens().iterator().next();
+        final Kitten kitten = session.merge(cat).getKittens().iterator().next();
 
         transaction.rollback();
         session.close();
@@ -48,7 +47,7 @@ public class SessionReconnectionTest extends CatDAOTestBase {
         final Session session = HibernateUtil.getSessionFactory().openSession();
         final Transaction transaction = session.beginTransaction();
 
-        final Kitten mergedKitten = (Kitten) session.merge(kitten);
+        final Kitten mergedKitten = session.merge(kitten);
         assertEquals(this.getNest0().getName(), mergedKitten.getCat().getNest().getName());
 
         transaction.rollback();

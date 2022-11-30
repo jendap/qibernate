@@ -8,9 +8,12 @@ import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import org.springframework.data.jpa.domain.Specification;
 
+import java.io.Serial;
+
 public class CatSpecs {
     public static Specification<Cat> isStarving(final int starvingThreshold) {
-        return new Specification<Cat>() {
+        return new Specification<>() {
+            @Serial
             private static final long serialVersionUID = 1L;
 
             @Override

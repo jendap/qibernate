@@ -2,9 +2,9 @@ package com.github.jendap.qibernate.spring.config;
 
 import lombok.val;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 
 import java.util.ArrayList;
@@ -22,14 +22,14 @@ public class PropertiesConfig {
     String activeEnvironments = "dev"; // TODO: remove hardcoded environment
 
     @Bean
-    public PropertyPlaceholderConfigurer properties() {
+    public PropertySourcesPlaceholderConfigurer properties() {
         val resources = new ArrayList<ClassPathResource>();
         resources.addAll(getClassPathResources("database.properties"));
         resources.addAll(getClassPathResources("database.pool.properties"));
-        val ppc = new PropertyPlaceholderConfigurer();
-        ppc.setLocations(resources.toArray(new ClassPathResource[0]));
-        ppc.setIgnoreUnresolvablePlaceholders(true);
-        return ppc;
+        val pspc = new PropertySourcesPlaceholderConfigurer();
+        pspc.setLocations(resources.toArray(new ClassPathResource[0]));
+        pspc.setIgnoreUnresolvablePlaceholders(true);
+        return pspc;
     }
 
     private List<ClassPathResource> getClassPathResources(final String propertyFileName) {

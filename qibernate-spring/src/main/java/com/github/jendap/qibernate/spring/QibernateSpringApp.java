@@ -6,7 +6,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 
 public class QibernateSpringApp {
     public static void main(final String[] args) {
-        try (final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();) {
+        try (final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext()) {
             final ConfigurableEnvironment environment = context.getEnvironment();
             environment.setActiveProfiles("tomcat-datasource", "prod");
             context.register(QibernateSpringConfig.class);

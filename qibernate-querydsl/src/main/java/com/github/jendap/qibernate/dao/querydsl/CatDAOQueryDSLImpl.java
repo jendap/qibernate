@@ -24,8 +24,7 @@ public class CatDAOQueryDSLImpl implements CatDAO {
 //				.setHint("org.hibernate.fetchSize", 50) // rows fetched per round trip
 //				.setHint("org.hibernate.cacheable", true) // query cacheable in 2nd level cache
 //				hibernate.jdbc.batch_size = 100, hibernate.order_inserts = true, hibernate.order_updates = true
-//				open stateless session - BEWARE of dataloss on last segment - HHH-4042
-//@Entity(dynamicUpdate = true)
+//				open stateless session - BEWARE of data loss on last segment - HHH-4042
                 .where(cat.name.eq(name)).fetch();
     }
 

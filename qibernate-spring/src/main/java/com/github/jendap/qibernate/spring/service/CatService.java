@@ -5,11 +5,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface CatService {
     @Transactional
-    public void playCatsByName(final String catName, final int amount);
+    void playCatsByName(final String catName, final int amount);
 
     @Transactional
-    public void feedAllStarvingCats(final int starvingThreshold, final int amount);
+    void feedAllStarvingCats(final int starvingThreshold, final int amount);
 
     @Transactional
-    public void save(final Cat cat);
+    void save(final Cat cat);
 }

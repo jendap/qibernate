@@ -16,7 +16,6 @@ import java.util.Set;
 import static org.junit.Assert.assertEquals;
 
 public class KittenValidationTest {
-    private static ValidatorFactory validatorFactory;
     private static Validator validator;
 
     private Cat cat0;
@@ -24,7 +23,7 @@ public class KittenValidationTest {
 
     @BeforeClass
     public static void setUpClass() {
-        validatorFactory = Validation.buildDefaultValidatorFactory();
+        final ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
         validator = validatorFactory.getValidator();
     }
 

@@ -4,8 +4,6 @@
 
     <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener"/>
 
-    <jmxConfigurator/>
-
     <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
         <resetJUL>true</resetJUL>
     </contextListener>

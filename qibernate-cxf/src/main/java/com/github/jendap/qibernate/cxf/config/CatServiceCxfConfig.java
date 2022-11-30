@@ -83,7 +83,7 @@ public class CatServiceCxfConfig {
     }
 
     private Map<Object, Object> rsExtensionMapping() {
-        val rsExtensionMapping = new HashMap<Object, Object>();
+        val rsExtensionMapping = new HashMap<>();
         rsExtensionMapping.put("xml", "application/xml");
         rsExtensionMapping.put("json", "application/json");
         return rsExtensionMapping;
