@@ -1,11 +1,10 @@
 package com.github.jendap.qibernate.model;
 
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Version;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Version;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

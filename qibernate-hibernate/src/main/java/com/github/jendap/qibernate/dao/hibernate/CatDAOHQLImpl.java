@@ -23,15 +23,13 @@ public class CatDAOHQLImpl implements CatDAO {
 
     @Override
     public List<Cat> findByName(final String name) {
-        @SuppressWarnings("unchecked") final List<Cat> result = this.session.createQuery("from Cat where name = :name").setCacheable(true)
-                .setParameter("name", name).list();
-        return result;
+        return this.session.createQuery("from Cat where name = :name", Cat.class)
+                .setCacheable(true).setParameter("name", name).list();
     }
 
     @Override
     public List<Cat> findByAge(final int from, final int to) {
-        @SuppressWarnings("unchecked") final List<Cat> result = this.session.createQuery("from Cat where age >= ?0 and age < ?1").setParameter(0, from)
-                .setParameter(1, to).list();
-        return result;
+        return this.session.createQuery("from Cat where age >= ?1 and age < ?2", Cat.class)
+                .setParameter(1, from).setParameter(2, to).list();
     }
 }

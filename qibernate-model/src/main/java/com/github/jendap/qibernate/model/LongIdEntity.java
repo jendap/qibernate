@@ -1,8 +1,7 @@
 package com.github.jendap.qibernate.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
-
-import javax.persistence.*;
 
 @Data
 @MappedSuperclass

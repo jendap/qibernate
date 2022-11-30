@@ -1,6 +1,6 @@
 package com.github.jendap.qibernate.cxf.config;
 
-import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+import com.fasterxml.jackson.jakarta.rs.json.JacksonJsonProvider;
 import com.github.jendap.qibernate.cxf.CatServiceRS;
 import com.github.jendap.qibernate.cxf.CatServiceRSImpl;
 import com.github.jendap.qibernate.cxf.CatServiceWS;
@@ -9,6 +9,8 @@ import com.github.jendap.qibernate.spring.config.CatServiceConfig;
 import com.github.jendap.qibernate.spring.config.datasource.DataSourceConfigPackagePlaceHolder;
 import com.github.jendap.qibernate.spring.repository.CatRepository;
 import com.github.jendap.qibernate.spring.service.CatService;
+import jakarta.inject.Inject;
+import jakarta.xml.ws.Endpoint;
 import lombok.val;
 import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.ext.logging.LoggingFeature;
@@ -21,8 +23,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-import javax.inject.Inject;
-import javax.xml.ws.Endpoint;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

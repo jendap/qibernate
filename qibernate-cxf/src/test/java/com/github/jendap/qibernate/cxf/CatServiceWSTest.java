@@ -1,11 +1,10 @@
 package com.github.jendap.qibernate.cxf;
 
+import jakarta.inject.Inject;
 import org.junit.Test;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
-
-import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
 

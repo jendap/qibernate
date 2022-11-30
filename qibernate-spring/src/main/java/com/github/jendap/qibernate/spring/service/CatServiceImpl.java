@@ -3,9 +3,8 @@ package com.github.jendap.qibernate.spring.service;
 import com.github.jendap.qibernate.model.Cat;
 import com.github.jendap.qibernate.spring.repository.CatRepository;
 import com.github.jendap.qibernate.spring.repository.CatSpecs;
+import jakarta.inject.Inject;
 import org.springframework.stereotype.Service;
-
-import javax.inject.Inject;
 
 import static com.github.jendap.qibernate.model.QCat.cat;
 

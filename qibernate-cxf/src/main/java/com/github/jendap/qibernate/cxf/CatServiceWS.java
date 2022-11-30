@@ -1,9 +1,9 @@
 package com.github.jendap.qibernate.cxf;
 
 import com.github.jendap.qibernate.cxf.domain.Cat;
+import jakarta.jws.WebParam;
+import jakarta.jws.WebService;
 
-import javax.jws.WebParam;
-import javax.jws.WebService;
 import java.util.Collection;
 
 @WebService(name = "CatServiceWebService")

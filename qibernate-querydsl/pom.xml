@@ -14,8 +14,6 @@
             <artifactId>qibernate-jpa</artifactId>
             <version>${project.version}</version>
         </dependency>
-
-        <!-- test -->
         <dependency>
             <groupId>com.github.jendap</groupId>
             <artifactId>qibernate-model</artifactId>
@@ -31,10 +29,11 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- test -->
         <dependency>
-            <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-jpa</artifactId>
-            <version>${querydsl.version}</version>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ehcache xmlns="http://ehcache.org/ehcache" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://ehcache.org/ehcache http://ehcache.org/ehcache.xsd"
-         updateCheck="false" monitoring="on">
-    <diskStore path="java.io.tmpdir"/>
-    <defaultCache maxElementsInMemory="10000" eternal="false"
-                  timeToIdleSeconds="120" timeToLiveSeconds="120" overflowToDisk="false"
-                  maxElementsOnDisk="10000000" diskPersistent="false"
-                  diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU"/>
-    <!-- transactionManagerLookup
-        class="net.sf.ehcache.transaction.manager.DefaultTransactionManagerLookup"
-        properties="jndiName=java:/TransactionManager" propertySeparator=";" / -->
-    <!-- cache name="xaCache" maxElementsInMemory="500" eternal="true" timeToIdleSeconds="300"
-        timeToLiveSeconds="600" overflowToDisk="false" diskPersistent="false" diskExpiryThreadIntervalSeconds="1"
-        transactionalMode="xa"> <terracotta clustered="false" /> </cache> <terracottaConfig
-        url="localhost:9510" / -->
-    <cache name="com.github.jendap.qibernate.model.Cat"
-           maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="300"
-           timeToLiveSeconds="600" overflowToDisk="true"/>
-    <cache name="com.github.jendap.qibernate.model.Kitten"
-           maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="300"
-           timeToLiveSeconds="600" overflowToDisk="true"/>
-    <cache name="org.hibernate.cache.StandardQueryCache"
-           maxElementsInMemory="5" eternal="false" timeToLiveSeconds="120"
-           overflowToDisk="true"/>
-</ehcache>
+<config xmlns='http://www.ehcache.org/v3'
+        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core.xsd">
+
+    <cache alias="cat">
+        <key-type>java.lang.Long</key-type>
+        <value-type>com.github.jendap.qibernate.model.Cat</value-type>
+        <resources>
+            <heap unit="entries">1024</heap>
+            <offheap unit="MB">4</offheap>
+        </resources>
+    </cache>
+
+    <!--<cache-template name="defaultCacheTemplate">-->
+    <!--    <key-type>java.lang.Long</key-type>-->
+    <!--    <value-type>java.lang.String</value-type>-->
+    <!--    <heap unit="entries">64</heap>-->
+    <!--</cache-template>-->
+
+    <!--<cache alias="numberKeyedCache" uses-template="defaultCacheTemplate">-->
+    <!--    <key-type>java.lang.Number</key-type>-->
+    <!--</cache>-->
+
+    <!--<cache alias="simpleCache" uses-template="defaultCacheTemplate" />-->
+</config>

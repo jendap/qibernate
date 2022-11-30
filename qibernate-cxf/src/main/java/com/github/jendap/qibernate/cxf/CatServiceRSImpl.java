@@ -3,10 +3,10 @@ package com.github.jendap.qibernate.cxf;
 import com.github.jendap.qibernate.cxf.domain.Cat;
 import com.github.jendap.qibernate.spring.repository.CatRepository;
 import com.github.jendap.qibernate.spring.service.CatService;
+import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.inject.Inject;
 import java.util.Collection;
 
 public class CatServiceRSImpl implements CatServiceRS {

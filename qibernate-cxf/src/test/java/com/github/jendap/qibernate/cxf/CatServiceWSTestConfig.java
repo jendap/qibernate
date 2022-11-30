@@ -2,14 +2,13 @@ package com.github.jendap.qibernate.cxf;
 
 import com.github.jendap.qibernate.cxf.config.CatServiceCxfConfig;
 import com.github.jendap.qibernate.spring.service.CatService;
+import jakarta.inject.Inject;
 import lombok.val;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-
-import javax.inject.Inject;
 
 @Configuration
 @Import({CatServiceCxfConfig.class})

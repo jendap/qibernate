@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
@@ -38,11 +38,13 @@
         <!-- Enable query and second-level cache -->
         <property name="cache.use_query_cache">true</property>
         <property name="cache.use_second_level_cache">true</property>
-        <property name="cache.use_structured_entries">true</property>
-        <property name="cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+        <!--<property name="cache.use_structured_entries">true</property>-->
+        <property name="hibernate.cache.region.factory_class">jcache</property>
+        <property name="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property>
+        <!--<property name="hibernate.javax.cache.uri">classpath:ehcache.xml</property>-->
         <property name="cache.region_prefix">qibernate</property>
-        <property name="cache.default_cache_concurrency_strategy">nonstrict-read-write</property>
-        <property name="javax.persistence.sharedCache.mode">DISABLE_SELECTIVE</property>
+        <!--<property name="cache.default_cache_concurrency_strategy">nonstrict-read-write</property>-->
+        <!--<property name="jakarta.persistence.sharedCache.mode">DISABLE_SELECTIVE</property>-->
 
         <!-- Echo all executed SQL to stdout -->
         <!-- <property name="show_sql">true</property> -->

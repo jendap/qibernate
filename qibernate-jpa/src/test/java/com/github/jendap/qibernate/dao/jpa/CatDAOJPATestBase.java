@@ -1,17 +1,16 @@
 package com.github.jendap.qibernate.dao.jpa;
 
 import com.github.jendap.qibernate.dao.CatDAOTestBase;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

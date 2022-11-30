@@ -3,8 +3,8 @@ package com.github.jendap.qibernate.dao.querydsl;
 import com.github.jendap.qibernate.dao.CatDAO;
 import com.github.jendap.qibernate.model.Cat;
 import com.querydsl.jpa.impl.JPAQuery;
+import jakarta.persistence.EntityManager;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 import static com.github.jendap.qibernate.model.QCat.cat;
@@ -20,7 +20,7 @@ public class CatDAOQueryDSLImpl implements CatDAO {
     public List<Cat> findByName(String name) {
         return new JPAQuery<Cat>(this.em).from(cat)
 //				.join(cat.kittens).fetch() // BEWARE: paging and fetch joins are undefined
-//				.setFlushMode(javax.persistence.FlushModeType.COMMIT) // no dirty checking and state flushing
+//				.setFlushMode(jakarta.persistence.FlushModeType.COMMIT) // no dirty checking and state flushing
 //				.setHint("org.hibernate.fetchSize", 50) // rows fetched per round trip
 //				.setHint("org.hibernate.cacheable", true) // query cacheable in 2nd level cache
 //				hibernate.jdbc.batch_size = 100, hibernate.order_inserts = true, hibernate.order_updates = true

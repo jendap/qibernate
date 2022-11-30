@@ -3,9 +3,9 @@ package com.github.jendap.qibernate.spring;
 import com.github.jendap.qibernate.model.Cat;
 import com.github.jendap.qibernate.spring.repository.CatRepository;
 import com.github.jendap.qibernate.spring.service.CatService;
+import jakarta.inject.Inject;
 import org.junit.Test;
 
-import javax.inject.Inject;
 import java.util.Iterator;
 
 import static com.github.jendap.qibernate.model.QCat.cat;

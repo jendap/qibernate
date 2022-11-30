@@ -3,14 +3,14 @@ package com.github.jendap.qibernate.valitator;
 import com.github.jendap.qibernate.model.Cat;
 import com.github.jendap.qibernate.model.Kitten;
 import com.github.jendap.qibernate.model.Nest;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;

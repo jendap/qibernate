@@ -1,9 +1,9 @@
 package com.github.jendap.qibernate.cxf;
 
 import com.github.jendap.qibernate.cxf.domain.Cat;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 
 @Path("/catservice/")

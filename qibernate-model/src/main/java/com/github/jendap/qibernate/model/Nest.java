@@ -1,11 +1,10 @@
 package com.github.jendap.qibernate.model;
 
+import jakarta.persistence.Cacheable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
-import javax.persistence.Cacheable;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor

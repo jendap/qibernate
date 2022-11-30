@@ -1,6 +1,7 @@
 package com.github.jendap.qibernate.spring.config;
 
 import com.github.jendap.qibernate.spring.repository.CatRepository;
+import jakarta.inject.Inject;
 import lombok.val;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +15,6 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -67,7 +67,8 @@ public class JpaConfig {
 //		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
 //		properties.setProperty("hibernate.hbm2ddl.import_files", "/import.sql");
 
-        properties.setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
+        properties.setProperty("hibernate.cache.region.factory_class", "jcache");
+        properties.setProperty("hibernate.javax.cache.provider", "org.ehcache.jsr107.EhcacheCachingProvider");
         return properties;
     }
 }

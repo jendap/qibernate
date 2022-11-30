@@ -1,9 +1,8 @@
 package com.github.jendap.qibernate.validator;
 
 import com.github.jendap.qibernate.model.Kitten;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class ValidKittenValidator implements ConstraintValidator<ValidKitten, Kitten> {
 //	public static class Severity {

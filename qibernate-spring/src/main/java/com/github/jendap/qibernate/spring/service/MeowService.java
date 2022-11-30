@@ -5,12 +5,11 @@ import com.github.jendap.qibernate.model.Kitten;
 import com.github.jendap.qibernate.spring.repository.CatRepository;
 import com.github.jendap.qibernate.spring.repository.CatSpecs;
 import com.github.jendap.qibernate.spring.repository.KittenRepository;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import static com.github.jendap.qibernate.model.QCat.cat;
 import static com.github.jendap.qibernate.model.QKitten.kitten;
