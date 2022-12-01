@@ -80,3 +80,6 @@ cabal-dev
 # python
 *.pyc
 *.pyo
+
+# jendap
+!*jendap*
