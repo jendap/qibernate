@@ -3,16 +3,15 @@ package com.github.jendap.qibernate.cxf;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClientConfig;
 import com.ning.http.client.Response;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class CatServiceWSIntegrationTest {
     private AsyncHttpClientConfig config;
     private AsyncHttpClient client;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         this.config = new AsyncHttpClientConfig.Builder()
 //				.setMaximumConnectionsPerHost(CONNECTIONS_PER_HOST)
@@ -23,10 +22,9 @@ public class CatServiceWSIntegrationTest {
 
     @Test
     public void testFeedAllStarvingCats() throws Exception {
-//		System.in.read();
         final Response response = client.preparePost("http://localhost:8080/").execute().get();
-        assertEquals("Not Found", response.getStatusText());
+        Assertions.assertEquals("Not Found", response.getStatusText());
 //		final String response = serviceClient.feedAllStarvingCats();
-//		assertEquals("Qk", response);
+//		Assertions.assertEquals("Qk", response);
     }
 }

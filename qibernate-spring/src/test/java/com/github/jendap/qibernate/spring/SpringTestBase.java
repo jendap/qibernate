@@ -1,11 +1,11 @@
 package com.github.jendap.qibernate.spring;
 
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {SpringTestBaseConfig.class})
 // TODO: We should use ContextHierarchy here to cache most of the beans but then we could
 //       inject DataSource into JpaConfig hence we would have to create...

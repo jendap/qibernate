@@ -7,10 +7,10 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -20,24 +20,24 @@ public class CatDAOJPATestBase extends CatDAOTestBase {
     private EntityManager entityManager;
     private EntityTransaction entityTransaction;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() {
         entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit");
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
         entityManagerFactory.close();
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
         this.entityManager = entityManagerFactory.createEntityManager();
         this.entityTransaction = this.entityManager.getTransaction();
         this.entityTransaction.begin();
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         this.entityTransaction.rollback();
         this.entityManager.close();

@@ -1,7 +1,7 @@
 package com.github.jendap.qibernate.dao.querydsl;
 
 import com.github.jendap.qibernate.dao.jpa.CatDAOJPATestBase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class CatDAOQueryDSLTest extends CatDAOJPATestBase {
     @Test

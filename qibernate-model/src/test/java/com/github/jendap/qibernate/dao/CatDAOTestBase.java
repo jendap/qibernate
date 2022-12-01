@@ -4,10 +4,9 @@ import com.github.jendap.qibernate.model.Cat;
 import com.github.jendap.qibernate.model.Kitten;
 import com.github.jendap.qibernate.model.Nest;
 import lombok.Data;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 @Data
 public class CatDAOTestBase {
@@ -26,9 +25,9 @@ public class CatDAOTestBase {
     }
 
     public void assertOnlyCat0Found(final List<Cat> cats) {
-        assertEquals(1, cats.size());
+        Assertions.assertEquals(1, cats.size());
         final Cat first = cats.get(0);
-        assertEquals(this.getCat0().getName(), first.getName());
+        Assertions.assertEquals(this.getCat0().getName(), first.getName());
     }
 
     public void testCatDao(final CatDAO dao) {

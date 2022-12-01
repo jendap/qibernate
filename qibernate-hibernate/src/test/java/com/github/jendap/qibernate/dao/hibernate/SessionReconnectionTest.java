@@ -7,11 +7,10 @@ import com.github.jendap.qibernate.model.Kitten;
 import com.github.jendap.qibernate.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 
 public class SessionReconnectionTest extends CatDAOTestBase {
@@ -21,9 +20,9 @@ public class SessionReconnectionTest extends CatDAOTestBase {
 
         final CatDAO dao = new CatDAOCriteriaAPIImpl(session);
         final List<Cat> catsByName = dao.findByName(this.getCat0().getName());
-        assertEquals(1, catsByName.size());
+        Assertions.assertEquals(1, catsByName.size());
         final Cat cat = catsByName.get(0);
-        assertEquals(this.getCat0().getName(), cat.getName());
+        Assertions.assertEquals(this.getCat0().getName(), cat.getName());
 
         transaction.rollback();
         session.close();
@@ -48,7 +47,7 @@ public class SessionReconnectionTest extends CatDAOTestBase {
         final Transaction transaction = session.beginTransaction();
 
         final Kitten mergedKitten = session.merge(kitten);
-        assertEquals(this.getNest0().getName(), mergedKitten.getCat().getNest().getName());
+        Assertions.assertEquals(this.getNest0().getName(), mergedKitten.getCat().getNest().getName());
 
         transaction.rollback();
         session.close();
@@ -63,7 +62,7 @@ public class SessionReconnectionTest extends CatDAOTestBase {
     public void testFetchFirstKittenFromCat() {
         final Cat cat = this.fetchCat();
         final Kitten kitten = this.fetchFirstKitten(cat);
-        assertEquals(this.getKitten0().getPrice(), kitten.getPrice());
+        Assertions.assertEquals(this.getKitten0().getPrice(), kitten.getPrice());
     }
 
     @Test
@@ -78,7 +77,7 @@ public class SessionReconnectionTest extends CatDAOTestBase {
     public void testMergeModifiedKitten() {
         final Cat cat = this.fetchCat();
         final Kitten kitten = this.fetchFirstKitten(cat);
-        assertEquals(this.getKitten0().getPrice(), kitten.getPrice());
+        Assertions.assertEquals(this.getKitten0().getPrice(), kitten.getPrice());
 
         kitten.setPrice(1111);
         this.mergeAndTestKitten(kitten);
