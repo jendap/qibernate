@@ -22,8 +22,9 @@ public class KittenValidationTest {
 
     @BeforeAll
     public static void setUpClass() {
-        final ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
-        validator = validatorFactory.getValidator();
+        try (ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory()) {
+            validator = validatorFactory.getValidator();
+        }
     }
 
     @BeforeEach

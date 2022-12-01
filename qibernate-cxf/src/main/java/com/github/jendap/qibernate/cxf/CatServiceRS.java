@@ -16,7 +16,7 @@ public interface CatServiceRS {
     @GET
     @Path("/byage")
     Collection<Cat> findByAge(@FormParam("from") final int from,
-                                     @FormParam("to") final int to);
+                              @FormParam("to") final int to);
 
     @POST
     @Path("/new")
