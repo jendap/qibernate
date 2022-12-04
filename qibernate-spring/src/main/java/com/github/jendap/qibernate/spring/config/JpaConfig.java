@@ -33,7 +33,7 @@ public class JpaConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         val emf = new LocalContainerEntityManagerFactoryBean();
-//		emf.setPersistenceUnitName("myPersistanceUnit");
+//		emf.setPersistenceUnitName("qibernatePersistenceUnit");
         emf.setJpaDialect(this.jpaDialect());
         emf.setJpaVendorAdapter(this.jpaVendorAdapter());
         emf.setJpaProperties(this.jpaProperties());

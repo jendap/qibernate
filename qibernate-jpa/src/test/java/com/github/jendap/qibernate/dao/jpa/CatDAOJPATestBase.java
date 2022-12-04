@@ -22,7 +22,7 @@ public class CatDAOJPATestBase extends CatDAOTestBase {
 
     @BeforeAll
     public static void setUpClass() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit");
+        entityManagerFactory = Persistence.createEntityManagerFactory("qibernatePersistenceUnit");
     }
 
     @AfterAll
