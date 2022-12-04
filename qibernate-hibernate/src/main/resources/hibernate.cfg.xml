@@ -52,7 +52,7 @@
         <!-- <property name="use_sql_comments">true</property> -->
 
         <!-- Enable hibernate JMX monitoring -->
-        <property name="generate_statistics">true</property>
+        <property name="generate_statistics">false</property>
 
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">create-drop</property>

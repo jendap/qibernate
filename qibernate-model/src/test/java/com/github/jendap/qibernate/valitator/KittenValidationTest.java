@@ -32,7 +32,6 @@ public class KittenValidationTest {
         final Nest nest0 = new Nest("nest0.name", "nest0.address");
         this.cat0 = new Cat(null, "cat0.name", nest0, 5, 10);
         this.cat1 = new Cat(null, "cat1.name", null, 10, 10);
-        System.err.println(">>>> " + this.cat0);
     }
 
     @Test

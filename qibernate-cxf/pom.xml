@@ -19,13 +19,15 @@
     <dependencies>
         <dependency>
             <groupId>com.github.jendap</groupId>
-            <artifactId>qibernate-model</artifactId>
+            <artifactId>qibernate-spring</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.jendap</groupId>
-            <artifactId>qibernate-spring</artifactId>
+            <artifactId>qibernate-common</artifactId>
+            <type>test-jar</type>
             <version>${project.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- jakarta -->
@@ -166,6 +168,10 @@
                                 <property>
                                     <name>spring.profiles.active</name>
                                     <value>dev</value>
+                                </property>
+                                <property>
+                                    <name>logback.configurationFile</name>
+                                    <value>${basedir}/../qibernate-common/src/test/resources/logback-test.xml</value>
                                 </property>
                             </properties>
                         </configuration>

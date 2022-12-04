@@ -47,7 +47,7 @@
             <!-- <property name="hibernate.use_sql_comments" value="true" /> -->
 
             <!-- Enable hibernate JMX monitoring -->
-            <property name="hibernate.generate_statistics" value="true"/>
+            <property name="hibernate.generate_statistics" value="false"/>
 
             <!-- Drop and re-create the database schema on startup -->
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>

@@ -24,15 +24,14 @@
         </dependency>
         <dependency>
             <groupId>com.github.jendap</groupId>
-            <artifactId>qibernate-model</artifactId>
+            <artifactId>qibernate-common</artifactId>
             <type>test-jar</type>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- TODO: extract logback into it's own module -->
         <dependency>
             <groupId>com.github.jendap</groupId>
-            <artifactId>qibernate-hibernate</artifactId>
+            <artifactId>qibernate-model</artifactId>
             <type>test-jar</type>
             <version>${project.version}</version>
             <scope>test</scope>

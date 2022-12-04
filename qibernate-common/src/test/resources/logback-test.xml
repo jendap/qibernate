@@ -9,6 +9,10 @@
         </encoder>
     </appender>
 
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.apache.cxf" level="DEBUG"/>
+    <logger name="org.hibernate" level="INFO" />
+
     <!-- Log all SQL DML statements as they are executed -->
     <!--<logger name="org.hibernate.SQL" level="DEBUG"/>-->
     <!-- Log all JDBC parameters -->
@@ -30,7 +34,7 @@
     <!-- Log everything. This is a lot of information, but it is useful for troubleshooting -->
     <!--<logger name="org.hibernate" level="DEBUG"/>-->
 
-    <root level="WARN">
+    <root level="INFO">
         <appender-ref ref="CONSOLE"/>
     </root>
 </configuration>

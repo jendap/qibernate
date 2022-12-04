@@ -16,6 +16,13 @@
         </dependency>
         <dependency>
             <groupId>com.github.jendap</groupId>
+            <artifactId>qibernate-common</artifactId>
+            <type>test-jar</type>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jendap</groupId>
             <artifactId>qibernate-model</artifactId>
             <type>test-jar</type>
             <version>${project.version}</version>

@@ -16,6 +16,7 @@
     </prerequisites>
 
     <modules>
+        <module>qibernate-common</module>
         <module>qibernate-model</module>
         <module>qibernate-jpa</module>
         <module>qibernate-hibernate</module>
