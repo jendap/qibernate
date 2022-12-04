@@ -1,5 +1,17 @@
 #!/usr/bin/evn bash
 
+# check the server is running (or advice how to start it)
+if ! curl 'http://localhost:8080/services/' 2>&1 >/dev/null; then
+  echo "ERROR: Server is not running!"
+  echo "You may start it with:"
+  # starts war using maven-jetty-plugin
+  echo "mvn -am -pl qibernate-cxf verify -P run-war -DskipTests"
+  exit 1
+fi
+
+
+
+
 # list services
 curl -v 'http://localhost:8080/services/'
 
