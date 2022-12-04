@@ -4,10 +4,10 @@
     <soap12:Header>
     </soap12:Header>
     <soap12:Body>
-        <m:newCat xmlns:m="http://webservice.spring.qibernate.jendap.github.com/">
+        <m:newCat xmlns:m="http://cxf.qibernate.jendap.github.com/">
             <cat>
-                <age>666</age>
-                <name>qocka</name>
+                <age>42</age>
+                <name>foo</name>
             </cat>
         </m:newCat>
     </soap12:Body>

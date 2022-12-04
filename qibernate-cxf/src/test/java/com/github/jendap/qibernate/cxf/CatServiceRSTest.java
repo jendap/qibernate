@@ -1,6 +1,6 @@
 package com.github.jendap.qibernate.cxf;
 
-import com.github.jendap.qibernate.cxf.config.CatServiceCxfWSConfig;
+import com.github.jendap.qibernate.cxf.config.CatServiceCxfRSConfig;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,15 +10,15 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {CatServiceCxfWSConfig.class})
+@ContextConfiguration(classes = {CatServiceCxfRSConfig.class})
 @ActiveProfiles({"dev"})
-public class CatServiceWSTest {
+public class CatServiceRSTest {
     @Inject
-    private CatServiceWS catServiceWS;
+    private CatServiceRS catServiceRS;
 
     @Test
     public void testFeedAllStarvingCats() {
-        final String response = catServiceWS.feedAllStarvingCats();
+        final String response = catServiceRS.feedAllStarvingCats();
         Assertions.assertEquals("Qk", response);
     }
 }
