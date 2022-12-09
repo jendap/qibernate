@@ -1,17 +1,14 @@
 package com.github.jendap.qibernate.cxf;
 
-import com.github.jendap.qibernate.cxf.config.CatServiceCxfWSConfig;
+import com.github.jendap.qibernate.cxf.config.CxfWSConfig;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {CatServiceCxfWSConfig.class})
-@ActiveProfiles({"dev"})
+@DataJpaTest
+@ContextConfiguration(classes = {CxfWSConfig.class})
 public class CatServiceWSTest {
     @Inject
     private CatServiceWS catServiceWS;

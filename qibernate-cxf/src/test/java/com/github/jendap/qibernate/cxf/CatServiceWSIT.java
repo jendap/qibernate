@@ -47,6 +47,6 @@ public class CatServiceWSIT {
                 .setHeader("Content-Type", "application/soap+xml; charset=utf-8")
                 .build();
         final HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        Assertions.assertTrue(response.body().contains("<return>Qk</return>"));
+        Assertions.assertTrue(response.body().contains("<return>Qk</return>"), response.body());
     }
 }

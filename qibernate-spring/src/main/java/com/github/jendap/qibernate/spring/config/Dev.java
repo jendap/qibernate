@@ -1,4 +1,4 @@
-package com.github.jendap.qibernate.spring.config.annotation;
+package com.github.jendap.qibernate.spring.config;
 
 import org.springframework.context.annotation.Profile;
 
@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Profile("dev")
-public @interface DevProfile {
+public @interface Dev {
 }

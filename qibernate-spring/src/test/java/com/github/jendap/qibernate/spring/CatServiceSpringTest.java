@@ -1,17 +1,22 @@
 package com.github.jendap.qibernate.spring;
 
 import com.github.jendap.qibernate.model.Cat;
+import com.github.jendap.qibernate.spring.config.SpringConfig;
 import com.github.jendap.qibernate.spring.repository.CatRepository;
 import com.github.jendap.qibernate.spring.service.CatService;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.util.Iterator;
 
 import static com.github.jendap.qibernate.model.QCat.cat;
 
-public class CatServiceSpringTest extends SpringTestBase {
+@DataJpaTest
+@ContextConfiguration(classes = {SpringConfig.class})
+public class CatServiceSpringTest {
     private static final String CAT0_NAME_PREFIX = "cat0";
 
     @Inject

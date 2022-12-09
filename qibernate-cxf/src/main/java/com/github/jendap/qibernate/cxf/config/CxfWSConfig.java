@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import({CatServiceCxfConfig.class})
-public class CatServiceCxfWSConfig {
+@Import({CxfConfig.class})
+public class CxfWSConfig {
     @Bean
     public CatServiceWS catServiceWS(final CatService catService, final CatRepository catRepository) {
         return new CatServiceWSImpl(catRepository, catService);

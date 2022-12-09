@@ -9,10 +9,9 @@
     <artifactId>qibernate-spring</artifactId>
 
     <properties>
-        <bonecp.version>0.8.0.RELEASE</bonecp.version>
-        <c3p0.version>0.9.5.5</c3p0.version>
+        <main.class>com.github.jendap.qibernate.spring.QibernateApp</main.class>
+
         <mysql-connector.version>8.0.31</mysql-connector.version>
-        <spring-data-jpa.version>3.0.0</spring-data-jpa.version>
         <tomcat-jdbc.version>10.1.2</tomcat-jdbc.version>
     </properties>
 
@@ -49,25 +48,12 @@
 
         <!-- spring -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-oxm</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>${spring-data-jpa.version}</version>
         </dependency>
 
         <!-- jdbc -->
@@ -77,26 +63,20 @@
             <version>${mysql-connector.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.mchange</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>${c3p0.version}</version>
-        </dependency>
-        <!-- TODO: cleanup the pools -->
-        <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-jdbc</artifactId>
             <version>${tomcat-jdbc.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jolbox</groupId>
-            <artifactId>bonecp</artifactId>
-            <version>${bonecp.version}</version>
         </dependency>
 
         <!-- test -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test-autoconfigure</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
