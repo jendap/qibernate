@@ -67,6 +67,11 @@
             <artifactId>tomcat-jdbc</artifactId>
             <version>${tomcat-jdbc.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>compile</scope>
+        </dependency>
 
         <!-- test -->
         <dependency>
@@ -79,10 +84,30 @@
             <artifactId>spring-boot-test-autoconfigure</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>run</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                                <configuration>
+                                    <cleanupDaemonThreads>false</cleanupDaemonThreads>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

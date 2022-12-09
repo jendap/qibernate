@@ -9,7 +9,6 @@
     <artifactId>qibernate-hibernate</artifactId>
 
     <properties>
-        <main.class>com.github.jendap.qibernate.QibernateMain</main.class>
     </properties>
 
     <dependencies>
